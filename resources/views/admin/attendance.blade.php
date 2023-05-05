@@ -112,14 +112,14 @@
                                 </td>
 
                                 <td>
-                                        @if($d->status_timein != '' && $d->status_timeout != '') 
-                                            <span class="@if($d->status_timein == 'Retard') red @else green @endif">{{ __("Retard") }}</span> |    
-                                            <span class="@if($d->status_timeout == 'Horaire respecté') blue @else orange @endif">{{ __("Départ anticipé") }}</span> 
-                                        @elseif($d->status_timein == 'Retard') 
-                                            <span class="red">{{ __("Retard") }}</span>
-                                        @else 
-                                            <span class="green">{{ __("A l'heure") }}</span>
-                                        @endif 
+                                    @if($d->status_timein != '' && $d->status_timeout != '') 
+                                    <span class="@if($d->status_timein == 'Late In') red @else green @endif">{{ __("Retard") }}</span> |    
+                                    <span class="@if($d->status_timeout == 'Horaire respecté') orange @else blue @endif">{{ __("Départ anticipé") }}</span> 
+                                         @elseif($d->status_timein == 'Late In') 
+                                         <span class="red">{{ __("Retard") }}</span>
+                                         @else 
+                                         <span class="green">{{ __("A l'heure") }}</span>
+                                     @endif 
                                 </td>                 
                                 @isset($ss)
                                     @if($ss->clock_comment == "on")
@@ -149,12 +149,14 @@
     <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.en.js') }}"></script>
     <script src="{{ asset('/assets/vendor/momentjs/moment.min.js') }}"></script>
     <script src="{{ asset('/assets/vendor/momentjs/moment-timezone-with-data.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.fr.js') }}"></script>
+
+
     
     <script type="text/javascript">
     $('#dataTables-example').DataTable({responsive: true,pageLength: 15,lengthChange: false,searching: false,ordering: true});
     $('.jtimepicker').mdtimepicker({format:'h:mm tt', theme: 'blue', hourPadding: true});
-    $('.airdatepicker').datepicker({ language: 'en', dateFormat: 'yyyy-mm-dd' });
-    
+    $('.airdatepicker').datepicker({ language: 'fr', dateFormat: 'yyyy-mm-dd', autoClose: true });
     $('.ui.dropdown.getref').dropdown({ onChange: function(value, text, $selectedItem) {
         $('select[name="name"] option').each(function() {
             if($(this).val()==value) {

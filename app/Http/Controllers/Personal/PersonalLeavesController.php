@@ -144,7 +144,7 @@ class PersonalLeavesController extends Controller
         
         table::leaves()->where('id', $id)->delete();
 
-        return redirect('personal/leaves/view')->with('success', trans("Le congé a été supprimé !"));
+        return redirect('personal/leaves/view')->with('success', trans("Le congé a été supprimé!"));
     }
 
 }

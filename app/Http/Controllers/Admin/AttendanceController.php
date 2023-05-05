@@ -84,9 +84,9 @@ class AttendanceController extends Controller
 
             if ($time_in_24h <= $sched_clock_in_time_24h) 
             {
-                $status_in = 'A l\'heure';
+                $status_in = 'In Time';
             } else {
-                $status_in = 'En Retard';
+                $status_in = 'Late In';
             }
         }
 
@@ -200,9 +200,9 @@ class AttendanceController extends Controller
 
                     if ($time_in_24h <= $sched_clock_in_time_24h) 
                     {
-                        $status_in = 'A l\'heure';
+                        $status_in = 'In Time';
                     } else {
-                        $status_in = 'En retard';
+                        $status_in = 'Late In';
                     }
                 }
 
@@ -247,9 +247,9 @@ class AttendanceController extends Controller
 
                     if ($time_in_24h <= $sched_clock_in_time_24h) 
                     {
-                        $status_in = 'A l\'heure';
+                        $status_in = 'In Time';
                     } else {
-                        $status_in = 'En retard';
+                        $status_in = 'Late In';
                     }
                 }
 

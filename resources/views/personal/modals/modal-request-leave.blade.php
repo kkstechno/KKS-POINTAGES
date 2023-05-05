@@ -6,7 +6,7 @@
         <div class="field">
             <label>{{ __("Type de congés") }}</label>
             <select class="ui dropdown uppercase getid" name="type">
-                <option value="">--Chosir Type--</option>
+                <option value="">--Choisir Type--</option>
                 @isset($lt)
                     @foreach ($lt as $data)
                         @foreach($rights as $p)

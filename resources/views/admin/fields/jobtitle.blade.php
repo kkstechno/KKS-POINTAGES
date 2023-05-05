@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
     @section('meta')
-        <title>Job Titles | Workday Time Clock</title>
+        <title>Ajout Fonction |KKS-POINTAGES</title>
         <meta name="description" content="Workday job titles, view job titles, and export or download job titles.">
     @endsection
 
@@ -11,9 +11,9 @@
     <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <h2 class="page-title">{{ __("Add Job Title") }}
-                <button class="ui basic button mini offsettop5 btn-import float-right"><i class="ui icon upload"></i> {{ __("Import") }}</button>
-                <a href="{{ url('export/fields/jobtitle' )}}" class="ui basic button mini offsettop5 btm-export float-right"><i class="ui icon download"></i> {{ __("Export") }}</a>
+            <h2 class="page-title">{{ __("AJOUTER UN TITRE DE TRAVAIL") }}
+                <button class="ui basic button mini offsettop5 btn-import float-right"><i class="ui icon upload"></i> {{ __("Importer") }}</button>
+                <a href="{{ url('export/fields/jobtitle' )}}" class="ui basic button mini offsettop5 btm-export float-right"><i class="ui icon download"></i> {{ __("Exporter") }}</a>
             </h2>
         </div>
     </div>
@@ -25,7 +25,7 @@
                     @if ($errors->any())
                     <div class="ui error message">
                         <i class="close icon"></i>
-                        <div class="header">{{ __("There were some errors with your submission") }}</div>
+                        <div class="header">{{ __("Erreur de validation") }}</div>
                         <ul class="list">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -36,9 +36,9 @@
                     <form id="add_jobtitle_form" action="{{ url('fields/jobtitle/add') }}" class="ui form" method="post" accept-charset="utf-8">
                         @csrf
                         <div class="field">
-                            <label>{{ __("Department") }}</label>
+                            <label>{{ __("Département") }}</label>
                             <select name="department" class="ui search dropdown getdeptcode">
-                                <option value="">Select Department</option>
+                                <option value="">Choisir un Département</option>
                                 @isset($d)
                                     @foreach ($d as $dept)
                                     <option value="{{ $dept->department }}" data-id="{{ $dept->id }}"> {{ $dept->department
@@ -48,7 +48,7 @@
                             </select>
                         </div>
                         <div class="field">
-                            <label>{{ __("Job Title") }} <span class="help">e.g. "Chief Executive Officer"</span></label>
+                            <label>{{ __("Tiitre/Fonction") }} <span class="help">(ex: "Directeur Général")</span></label>
                             <input class="uppercase" name="jobtitle" value="" type="text" value="">
                         </div>
                         <div class="field">
@@ -62,7 +62,7 @@
                         </div>
                         <div class="actions">
                             <input type="hidden" name="dept_code" value="">
-                            <button type="submit" class="ui positive button small"><i class="ui icon check"></i> {{ __("Save") }}</button>
+                            <button type="submit" class="ui positive button small"><i class="ui icon check"></i> {{ __("Valider") }}</button>
                         </div>
                     </form>
                 </div>
@@ -75,8 +75,8 @@
                     <table width="100%" class="table table-striped table-hover" id="dataTables-example" data-order='[[ 1, "asc" ]]'>
                         <thead>
                             <tr>
-                                <th>{{ __("Job Title") }}</th>
-                                <th>{{ __("Department") }}</th>
+                                <th>{{ __("Tiitre/Fonction") }}</th>
+                                <th>{{ __("Département") }}</th>
                                 <th></th>
                             </tr>
                         </thead>

@@ -57,6 +57,25 @@
                         <p>{{ __('Employés') }}</p>
                     </a>
                 </li>
+                <li class="">
+                    <a href="{{ url('fields/company') }}">
+                        <i class="ui icon university"></i>
+                        <p>{{ __('Entreprise') }}</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{{ url('fields/department') }}">
+                        <i class="ui icon cubes"></i>
+                        <p>{{ __('Department') }}</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{{ url('fields/jobtitle') }}">
+                        <i class="ui icon pencil alternate"></i>
+                        <p>{{ __('Fonction') }}</p>
+                        <hr>
+                    </a>
+                </li>
                     
                 <li class="">
                     <a href="{{ url('attendance') }}">
@@ -69,6 +88,7 @@
                     <a href="{{ url('schedules') }}">
                         <i class="ui icon calendar alternate outline"></i>
                         <p>{{ __('Horaires') }}</p>
+                        <hr>
                     </a>
                 </li>
                 
@@ -76,6 +96,13 @@
                     <a href="{{ url('leaves') }}">
                         <i class="ui icon calendar plus outline"></i>
                         <p>{{ __('Congés') }}</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{{ url('fields/leavetype') }}">
+                        <i class="ui icon calendar alternate outline"></i>
+                        <p>{{ __('Type de congé') }}</p>
+                        <hr>
                     </a>
                 </li>
                 <li>

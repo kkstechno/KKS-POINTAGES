@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="page-title">{{ __('Modifier Horaire') }}</h2>
+                <h2 class="page-title">{{ __('Modifier un Horaire') }}</h2>
             </div>    
         </div>
 
@@ -44,11 +44,11 @@
                     <div class="two fields">
                         <div class="field">
                             <label for="">{{ __('Heure de début') }}</label>
-                            <input type="text" placeholder="00:00 AM" name="intime" class="jtimepicker" value="@php if($tf == 1 && $s->intime != null) { echo e(date('H:i', strtotime($s->intime))); } else { echo e(date('H:i', strtotime($s->intime))); } @endphp"/>
+                            <input type="text" placeholder="00:00" name="intime" class="jtimepicker" value="@php if($tf == 1 && $s->intime != null) { echo e(date('H:i', strtotime($s->intime))); } else { echo e(date('H:i', strtotime($s->intime))); } @endphp"/>
                         </div>
                         <div class="field">
                             <label for="">{{ __('Heure de fin') }}</label>
-                            <input type="text" placeholder="00:00 PM" name="outime" class="jtimepicker" value="@php if($tf == 1 && $s->outime != null) { echo e(date('H:i', strtotime($s->outime))); } else { echo e(date('H:i', strtotime($s->outime))); } @endphp"/>
+                            <input type="text" placeholder="00:00" name="outime" class="jtimepicker" value="@php if($tf == 1 && $s->outime != null) { echo e(date('H:i', strtotime($s->outime))); } else { echo e(date('H:i', strtotime($s->outime))); } @endphp"/>
                         </div>
                     </div>
 
@@ -135,8 +135,10 @@
 
     @section('scripts')
     <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/datepicker.min.js') }}"></script>
-    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.en.js') }}"></script>
+{{--     <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.en.js') }}"></script> --}}
     <script src="{{ asset('/assets/vendor/mdtimepicker/mdtimepicker.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.fr.js') }}"></script>
+
 
     <script type="text/javascript">
         @isset($tf)
@@ -146,7 +148,10 @@
                 $('.jtimepicker').mdtimepicker({format:'hh:mm', theme: 'blue', hourPadding: true});
             @endif
         @endisset
-        $('.airdatepicker').datepicker({ language: 'en', dateFormat: 'yyyy-mm-dd' });
+        $('.airdatepicker').datepicker({ language: 'fr', dateFormat: 'yyyy-mm-dd' });
+        $('.airdatepicker').datepicker({ language: 'fr', dateFormat: 'yyyy-mm-dd', autoClose: true });
+
+
         $('.ui.dropdown.getid').dropdown({ onChange: function(value, text, $selectedItem) {
             $('select[name="employee"] option').each(function() {
                 if($(this).val()==value) { var id = $(this).attr('data-id'); $('input[name="id"]').val(id); };

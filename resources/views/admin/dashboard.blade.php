@@ -10,8 +10,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-            <h2 class="page-title">{{ __('TABLEAU DE BORD') }}</h2>
-            </div>    
+            
+            <h2 class="page-title"><i class="ui icon dashboard"></i><span style="color:brown;">Admin |</span>{{ __(' TABLEAU DE BORD') }} </h2>
+            </div><br>    
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4">
@@ -202,9 +203,9 @@
                                         </td>
                                         <td>
                                             @if($v->status_timein != '' && $v->status_timeout != '') 
-                                            <span class="@if($v->status_timein == 'Retard') red @else green @endif">{{ __("Retard") }}</span> |    
-                                            <span class="@if($v->status_timeout == 'Horaire respecté') blue @else orange @endif">{{ __("Départ anticipé") }}</span> 
-                                                 @elseif($v->status_timein == 'Retard') 
+                                            <span class="@if($v->status_timein == 'Late In') red @else green @endif">{{ __("Retard") }}</span> |    
+                                            <span class="@if($v->status_timeout == 'Horaire respecté') orange @else blue @endif">{{ __("Départ anticipé") }}</span> 
+                                                 @elseif($v->status_timein == 'Late In') 
                                                  <span class="red">{{ __("Retard") }}</span>
                                                  @else 
                                                  <span class="green">{{ __("A l'heure") }}</span>
@@ -212,7 +213,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                                @endisset
+                                @endisset   
                             </tbody>
                             </table>        
                     </div>

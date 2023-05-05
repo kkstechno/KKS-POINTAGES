@@ -81,10 +81,10 @@
                 $state = response['state'];
                 $('.edit input[name="id"]').val(response['id']);
                 $('.edit input[name="role_name"]').val(response['role_name']);
-                if ($state == 'Active') {
-                    $('.ui.dropdown.state').dropdown({values: [{name: 'Active',value: 'Active', selected : true},{name: 'Disabled',value: 'Disabled'}]});
-                } else if($state == 'Disabled') {
-                    $('.ui.dropdown.state').dropdown({values: [{name: 'Active',value: 'Active'},{name: 'Disabled',value: 'Disabled', selected : true}]});
+                if ($state == 'Activé') {
+                    $('.ui.dropdown.state').dropdown({values: [{name: 'Activé',value: 'Activé', selected : true},{name: 'Désactivé',value: 'Désactivé'}]});
+                } else if($state == 'Désactivé') {
+                    $('.ui.dropdown.state').dropdown({values: [{name: 'Activé',value: 'Activé'},{name: 'Désactivé',value: 'Désactivé', selected : true}]});
                 } 
                 $('ui.modal.edit').modal('show');
             }

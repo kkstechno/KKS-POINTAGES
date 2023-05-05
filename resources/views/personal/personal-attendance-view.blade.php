@@ -98,13 +98,13 @@
                                     </td>
                                     <td>
                                         @if($v->status_timein != '' && $v->status_timeout != '') 
-                                            <span class="@if($v->status_timein == 'Retard') red @else green @endif">{{ __("Retard") }}</span> |    
-                                            <span class="@if($v->status_timeout == 'Horaire respecté') blue @else orange @endif">{{ __("Départ anticipé") }}</span> 
-                                        @elseif($v->status_timein == 'Retard') 
-                                            <span class="red">{{ __("Retard") }}</span>
-                                        @else 
-                                            <span class="green">{{ __("A l'heure") }}</span>
-                                        @endif 
+                                        <span class="@if($v->status_timein == 'Late In') red @else green @endif">{{ __("Retard") }}</span> |    
+                                        <span class="@if($v->status_timeout == 'Horaire respecté') blue @else orange @endif">{{ __("Départ anticipé") }}</span> 
+                                             @elseif($v->status_timein == 'Late In') 
+                                             <span class="red">{{ __("Retard") }}</span>
+                                             @else 
+                                             <span class="green">{{ __("A l'heure") }}</span>
+                                         @endif 
                                     </td>
                                 </tr>
                             @endforeach
