@@ -1,7 +1,7 @@
 @extends('layouts.personal')
 
     @section('meta')
-        <title>Edit Leave Request | Workday Time Clock</title>
+        <title>Edition Demandes | KKS-POINTAGES</title>
         <meta name="description" content="Workday edit pending leave of absence.">
     @endsection
 
@@ -13,7 +13,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <h2 class="page-title">{{ __("Edit Leave Request") }}</h2>
+            <h2 class="page-title">{{ __("MODIFIER LA DEMANDE") }}</h2>
         </div>
         <div class="row">
             <div class="box box-success">
@@ -21,7 +21,7 @@
                 <form id="edit_request_personal_leave_form" action="{{ url('personal/leaves/update') }}" class="ui form" method="post" accept-charset="utf-8">
                     @csrf
                     <div class="field">
-                        <label>{{ __("Leave Type") }}</label>
+                        <label>{{ __("Type Congé") }}</label>
                         <select class="ui dropdown uppercase" name="type">
                             @isset($lt))
                             @foreach ($lt as $data)
@@ -32,20 +32,20 @@
                     </div>
                     <div class="two fields">
                         <div class="field">
-                            <label for="">{{ __("Leave from") }}</label>
+                            <label for="">{{ __("Date de soumission") }}</label>
                             <input id="leavefrom" type="text" placeholder="Date" name="leavefrom" class="airdatepicker" value="@isset($l->leavefrom){{ $l->leavefrom }}@endisset"/>
                         </div>
                         <div class="field">
-                            <label for="">{{ __("Leave to") }}</label>
+                            <label for="">{{ __("Date Départ") }}</label>
                             <input id="leaveto" type="text" placeholder="Date" name="leaveto" class="airdatepicker" value="@isset($l->leaveto){{ $l->leaveto }}@endisset"/>
                         </div>
                     </div>
                     <div class="field">
-                        <label for="">{{ __("Return Date") }}</label>
+                        <label for="">{{ __("Date Retour") }}</label>
                         <input id="returndate" type="text" placeholder="Enter Return date" name="returndate" class="airdatepicker uppercase" value="@isset($l->returndate){{ $l->returndate }}@endisset"/>
                     </div>
                     <div class="field">
-                        <label>{{ __("Reason") }}</label>
+                        <label>{{ __("Motifs/Raisons") }}</label>
                         <textarea class="uppercase" rows="5" name="reason" value="@isset($l->reason){{ $l->reason }}@endisset">@isset($l->reason){{ $l->reason }}@endisset</textarea>
                     </div>
                     <div class="field">
@@ -59,8 +59,8 @@
                     </div>
                     <div class="actions">
                         <input type="hidden" name="id" value="@isset($e_id){{ $e_id }}@endisset">
-                        <button class="ui positive small button" type="submit" name="submit"><i class="ui checkmark icon"></i> {{ __("Update") }}</button>
-                        <a href="{{ url('personal/leaves/view') }}" class="ui grey small button cancel"><i class="ui times icon"></i> {{ __("Cancel") }}</a>
+                        <button class="ui positive small button" type="submit" name="submit"><i class="ui checkmark icon"></i> {{ __("Mise à jour") }}</button>
+                        <a href="{{ url('personal/leaves/view') }}" class="ui grey small button cancel"><i class="ui times icon"></i> {{ __("Annuler") }}</a>
                     </div>
                 </form>  
                 </div>
@@ -72,10 +72,14 @@
 
     @section('scripts')
     <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/datepicker.min.js') }}"></script>
-    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.en.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.fr.js') }}"></script>
+
+   {{--  <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.en.js') }}"></script> --}}
 
     <script type="text/javascript">
-        $('.airdatepicker').datepicker({ language: 'en', dateFormat: 'yyyy-mm-dd' });
+       // $('.airdatepicker').datepicker({ language: 'en', dateFormat: 'yyyy-mm-dd' });
+       $('.airdatepicker').datepicker({ language: 'fr', dateFormat: 'yyyy-mm-dd', autoClose: true });
+
     </script>
     @endsection
 

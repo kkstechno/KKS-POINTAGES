@@ -34,7 +34,7 @@ class PersonalDashboardController extends Controller
         $a = table::attendance()->where('reference', $id)->latest('date')->take(4)->get();
 
         $la = table::attendance()->where([['reference', $id], ['status_timein', 'Late In']])->whereBetween('date', [$sm, $em])->count();
-        $it = table::attendance()->where([['reference', $id], ['status_timein', 'On time']])->whereBetween('date', [$sm, $em])->count();
+        $it = table::attendance()->where([['reference', $id], ['status_timein', 'In Time']])->whereBetween('date', [$sm, $em])->count();
         $ed = table::attendance()->where([['reference', $id], ['status_timeout', 'On time']])->whereBetween('date', [$sm, $em])->count();
 
         return view('personal.personal-dashboard', compact('cs', 'ps', 'al', 'pl', 'ald', 'a', 'la', 'it', 'tf'));

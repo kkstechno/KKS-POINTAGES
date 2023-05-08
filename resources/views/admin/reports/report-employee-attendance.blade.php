@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
     @section('meta')
-        <title>Reports | Workday Time Clock</title>
+        <title>Rapport des Demandes | KKS-POINTAGES</title>
         <meta name="description" content="Workday reports, view reports, and export or download reports.">
     @endsection
 
@@ -13,8 +13,8 @@
     
     <div class="container-fluid">
         <div class="row">
-            <h2 class="page-title">{{ __("Employee Attendance Report") }}
-                <a href="{{ url('reports') }}" class="ui basic blue button mini offsettop5 float-right"><i class="ui icon chevron left"></i>{{ __("Return") }}</a>
+            <h2 class="page-title">{{ __("RAPPORT DES DEMANDES") }}
+                <a href="{{ url('reports') }}" class="ui basic blue button mini offsettop5 float-right"><i class="ui icon chevron left"></i>{{ __("Retour") }}</a>
             </h2> 
         </div>
 
@@ -29,7 +29,7 @@
                                     <option value="">{{ __("Employee") }}</option>
                                     @isset($employee)
                                         @foreach($employee as $e)
-                                            <option value="{{ $e->lastname }}, {{ $e->firstname }}" data-id="{{ $e->idno }}">{{ $e->lastname }}, {{ $e->firstname }}</option>
+                                            <option value="{{ $e->lastname }} {{ $e->firstname }}" data-id="{{ $e->idno }}">{{ $e->lastname }} {{ $e->firstname }}</option>
                                         @endforeach
                                     @endisset
                                 </select>
@@ -47,7 +47,7 @@
 
                             <input type="hidden" name="emp_id" value="">
                             <button id="btnfilter" class="ui icon button positive small inline-button"><i class="ui icon filter alternate"></i> {{ __("Filter") }}</button>
-                            <button type="submit" name="submit" class="ui icon button blue small inline-button"><i class="ui icon download"></i> {{ __("Download") }}</button>
+                            <button type="submit" name="submit" class="ui icon button blue small inline-button"><i class="ui icon download"></i> {{ __("Télécharger") }}</button>
                         </div>
                     </form>
 
@@ -55,17 +55,17 @@
                         <thead>
                             <tr>
                                 <th>{{ __("Date") }}</th>
-                                <th>{{ __("Employee Name") }}</th>
-                                <th>{{ __("Time In") }}</th>
-                                <th>{{ __("Time Out") }}</th>
-                                <th>{{ __("Total Hours") }}</th>
+                                <th>{{ __("Nom Employé") }}</th>
+                                <th>{{ __("Heure Arrivée") }}</th>
+                                <th>{{ __("Heure Départ") }}</th>
+                                <th>{{ __("Durée") }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @isset($empAtten)
                             @foreach ($empAtten as $v)
-                            <tr>
-                                <td>{{ $v->date }}</td>
+                            <tr> 
+                                <td>@php echo e(date('d-m-Y', strtotime($v->date))) @endphp</td>
                                 <td>{{ $v->employee }}</td>
                                 <td>
                                     @php

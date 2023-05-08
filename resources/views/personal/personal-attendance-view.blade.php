@@ -58,7 +58,7 @@
                                         @php
                                             if($v->timein != null) {
                                                 if ($tf == 1) {
-                                                    echo e(date('h:i:s A', strtotime($v->timein)));
+                                                    echo e(date('h:i:s', strtotime($v->timein)));
                                                 } else {
                                                     echo e(date('H:i:s', strtotime($v->timein)));
                                                 }
@@ -69,7 +69,7 @@
                                         @php
                                             if($v->timeout != null) {
                                                 if ($tf == 1) {
-                                                    echo e(date('h:i:s A', strtotime($v->timeout)));
+                                                    echo e(date('h:i:s', strtotime($v->timeout)));
                                                 } else {
                                                     echo e(date('H:i:s', strtotime($v->timeout)));
                                                 }
@@ -82,29 +82,38 @@
                                             @php
                                                 if(stripos($v->totalhours, ".") === false) {
                                                     $h = $v->totalhours;
-                                                    $m = "00"; // Initialisation de $m à "00"
                                                 } else {
                                                     $HM = explode('.', $v->totalhours); 
                                                     $h = $HM[0]; 
-                                                    $m = str_pad($HM[1], 2, "0", STR_PAD_LEFT); // Formatage de $m au format 00
+                                                    $m = $HM[1];
                                                 }
-                                                $h = str_pad($h, 2, "0", STR_PAD_LEFT); // Formatage de $h au format 00
                                             @endphp
                                         @endif
                                         @if($v->totalhours != null)
-                                            {{ $h }} H {{ $m }} mn
+                                            @if(stripos($v->totalhours, ".") === false) 
+                                                {{ $h }} H
+                                            @else 
+                                                {{ $h }} H {{ $m }} mn
+                                            @endif
                                         @endif
-                                         @endisset                                    
+                                    @endisset                                 
                                     </td>
                                     <td>
-                                        @if($v->status_timein != '' && $v->status_timeout != '') 
-                                        <span class="@if($v->status_timein == 'Late In') red @else green @endif">{{ __("Retard") }}</span> |    
-                                        <span class="@if($v->status_timeout == 'Horaire respecté') blue @else orange @endif">{{ __("Départ anticipé") }}</span> 
-                                             @elseif($v->status_timein == 'Late In') 
-                                             <span class="red">{{ __("Retard") }}</span>
-                                             @else 
-                                             <span class="green">{{ __("A l'heure") }}</span>
-                                         @endif 
+                                        @if($v->status_timein != '') 
+                                        @if($v->status_timein == 'Late In')
+                                            <span class="red">{{ __("Retard") }}</span> | 
+                                        @else
+                                            <span class="green">{{ __("A l'heure") }}</span> | 
+                                        @endif
+                                    @endif
+                                    
+                                    @if($v->status_timeout != '') 
+                                        @if($v->status_timeout == 'Horaire respecté')
+                                            <span class="blue">{{ __("Horaire respecté") }}</span> 
+                                        @else
+                                            <span class="orange">{{ __("Départ anticipé") }}</span> 
+                                        @endif
+                                    @endif
                                     </td>
                                 </tr>
                             @endforeach

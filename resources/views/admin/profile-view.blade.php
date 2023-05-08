@@ -91,27 +91,6 @@
                                         <td>@isset($c->jobposition) {{ $c->jobposition }} @endisset</td>
                                     </tr>
                                     <tr>
-                                        <td>{{ __('Privilège') }}</td>
-                                        <td>
-                                            @isset($leavetype)
-                                                @isset($leavegroup) 
-                                                    @isset($c->leaveprivilege)
-                                                        @foreach($leavegroup as $lg)
-                                                            @if($lg->id == $c->leaveprivilege)
-                                                                @php
-                                                                    $lp = explode(",", $lg->leaveprivileges);
-                                                                @endphp
-                                                                @foreach($lp as $rights) 
-                                                                    @foreach($leavetype as $lt)
-                                                                        @if($lt->id == $rights) {{ $lt->leavetype }}, @endif
-                                                                    @endforeach
-                                                                @endforeach
-                                                            @endif
-                                                        @endforeach
-                                                    @endisset
-                                                @endisset
-                                            @endisset
-                                        </td>
                                     </tr>
                                     <tr>
                                         <td><p>{{ __('Type d\'emploi') }}</p></td>

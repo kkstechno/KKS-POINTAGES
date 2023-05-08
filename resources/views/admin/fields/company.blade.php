@@ -1,7 +1,7 @@
 @extends('layouts.default')
     
     @section('meta')
-        <title>Companies | Workday Time Clock</title>
+        <title>Entreprises | KKS-POINTAGES</title>
         <meta name="description" content="Workday companies, view companies, and export or download companies.">
     @endsection
 
@@ -11,9 +11,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="page-title uppercase">{{ __("Add Company") }}
-                    <button class="ui basic button mini offsettop5 btn-import float-right"><i class="ui icon upload"></i> {{ __("Import") }}</button>
-                    <a href="{{ url('export/fields/company' )}}" class="ui basic button mini offsettop5 btn-export float-right"><i class="ui icon download"></i> {{ __("Export") }}</a>
+                <h2 class="page-title uppercase">{{ __("AJOUTER UNE ENTREPRISE") }}
+                    <button class="ui basic button mini offsettop5 btn-import float-right"><i class="ui icon upload"></i> {{ __("Importer") }}</button>
+                    <a href="{{ url('export/fields/company' )}}" class="ui basic button mini offsettop5 btn-export float-right"><i class="ui icon download"></i> {{ __("Exporter") }}</a>
                 </h2>
             </div>
         </div>
@@ -25,7 +25,7 @@
                         @if ($errors->any())
                         <div class="ui error message">
                             <i class="close icon"></i>
-                            <div class="header">{{ __("There were some errors with your submission") }}</div>
+                            <div class="header">{{ __("Erreur de validation !") }}</div>
                             <ul class="list">
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -36,7 +36,7 @@
                         <form id="add_company_form" action="{{ url('fields/company/add') }}" class="ui form" method="post" accept-charset="utf-8">
                             @csrf
                             <div class="field">
-                                <label>{{ __("Company Name") }} <span class="help">e.g. "Apple Corporation"</span></label>
+                                <label>{{ __("Nom Entrepise") }} <span class="help"></span></label>
                                 <input class="uppercase" name="company" value="" type="text">
                             </div>
                             <div class="field">
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="actions">
-                                <button type="submit" class="ui positive button small"><i class="ui icon check"></i> {{ __("Save") }}</button>
+                                <button type="submit" class="ui positive button small"><i class="ui icon check"></i> {{ __("Valider") }}</button>
                             </div>          
                         </form>
                     </div>
@@ -62,8 +62,8 @@
                     <table width="100%" class="table table-striped table-hover" id="dataTables-example">
                         <thead>
                             <tr>
-                                <th>{{ __("Company") }}</th>
-                                <th></th>
+                                <th>{{ __("Nom Entreprise") }}</th>
+                                <th>{{ __("Action") }}</th>
                             </tr>
                         </thead>
                         <tbody>

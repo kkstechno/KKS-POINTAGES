@@ -51,14 +51,14 @@ class UsersController extends Controller
 
         if ($password != $password_confirmation) 
         {
-            return redirect('users')->with('error', trans("Whoops! Password confirmation does not match!"));
+            return redirect('users')->with('error', trans("Oups! La confirmation du mot de passe ne correspond pas."));
         }
 
         $is_user_exist = table::users()->where('email', $email)->count();
 
         if($is_user_exist >= 1) 
         {
-            return redirect('users')->with('error', trans("Whoops! this user already exist"));
+            return redirect('users')->with('error', trans("Oups ! cet utilisateur existe déjà"));
         }
 
         $idno = table::companydata()->where('reference', $ref)->value('idno');
@@ -76,7 +76,7 @@ class UsersController extends Controller
             ],
     	]);
 
-    	return redirect('/users')->with('success', trans("New user has been added."));
+    	return redirect('/users')->with('success', trans("Un nouvel utilisateur a été ajouté."));
     }
 
     public function edit($id) 
@@ -117,7 +117,7 @@ class UsersController extends Controller
 
             if ($password != $password_confirmation) 
             {
-                return redirect('users')->with('error', trans("Whoops! Password confirmation does not match!"));
+                return redirect('users')->with('error', trans("Oups! La confirmation du mot de passe ne correspond pas..."));
             }
 
             table::users()->where('reference', $ref)->update([
@@ -134,7 +134,7 @@ class UsersController extends Controller
             ]);
         }
 
-    	return redirect('users')->with('success', trans("User Account has been updated!"));       
+    	return redirect('users')->with('success', trans("Le compte utilisateur a été mis à jour !"));       
     }
 
     public function delete($id, Request $request)
@@ -143,6 +143,6 @@ class UsersController extends Controller
 
     	table::users()->where('id', $id)->delete();
     	
-        return redirect('users')->with('success', trans("User Account has been deleted!"));
+        return redirect('users')->with('success', trans("Le compte utilisateur a été supprimé !"));
     }
 }

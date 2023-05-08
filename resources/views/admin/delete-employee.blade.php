@@ -19,7 +19,11 @@
                             <div class="ui header" style="margin:0; text-align:center;">{{ __('Êtes-vous sûr de vouloir supprimer ceci ?') }}</div>
                         </div>
                         <div class="field">
-                            <p>{{ __("La suppression de ce compte supprime également les données suivantes: présence du salarié, calendriers, congés, compte utilisateur ou tous les enregistrements associés à ce salarié.") }}</p>
+                            <p>{{ __("La suppression de ce compte supprime également les données suivantes: ")}}</p><br>
+                            <p>&bull; Les pointages effectués</p>
+                            <p>&bull; Les horaires de travail</p>
+                            <p>&bull; Les demandes de congés et de permissions d'absence</p>
+                            <p>&bull; et tous les enregistrements associés à ce salarié</p>
                         </div>
                         <div class="field">
                             <a href="{{ url('employees') }}" class="ui black deny button">{{ __('NON') }}</a>

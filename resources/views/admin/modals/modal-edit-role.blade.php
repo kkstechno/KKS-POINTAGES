@@ -10,8 +10,8 @@
         <div class="field">
             <label>{{ __("Statut") }}</label>
             <select name="state" class="ui dropdown state uppercase">
-                <option value="Active">{{ __("Activé") }}</option>
-                <option value="Disabled">{{ __("Désactivé") }}</option>
+                <option value="Activé">{{ __("Activé") }}</option>
+                <option value="Désactivé">{{ __("Désactivé") }}</option>
             </select>
         </div>
         <div class="field">

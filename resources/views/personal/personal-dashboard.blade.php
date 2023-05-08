@@ -10,14 +10,14 @@
     <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <h2 class="page-title"><i class="ui icon dashboard"></i><span style="color:brown;">Employés |</span>{{ __(' TABLEAU DE BORD') }} </h2>        
+            <h2 class="page-title"><i class="ui icon dashboard"></i><span style="color:brown;">Collaborateurs |</span>{{ __(' TABLEAU DE BORD') }} </h2>        
         </div>    
     </div><br><br>
 
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="info-box">
-                <span class="info-box-icon bg-white"><img src="{{ asset('/assets/images/img/5.jpg') }}" alt="Votre image" class="img-fluid"></span>
+                <span class="info-box-icon bg-white"><img src="{{ asset('/assets/images/img/4.jpg') }}" alt="Votre image" class="img-fluid"></span>
                 <div class="info-box-content">
                     <span class="info-box-text"><span class="uppercase" style="color:Green;">{{ __("POINTAGE (MOIS EN COURS)") }}</span></span>
                     <div class="progress-group">
@@ -45,7 +45,7 @@
 
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="info-box">
-                <span class="info-box-icon bg-white"><img src="{{ asset('/assets/images/img/4.jpg') }}" alt="Votre image" class="img-fluid"></span>
+                <span class="info-box-icon bg-white"><img src="{{ asset('/assets/images/img/5.jpg') }}" alt="Votre image" class="img-fluid"></span>
                 <div class="info-box-content">
                     <span class="info-box-text" style="color:Red;">{{ __("HORAIRE DE TRAVAIL") }}</span>
                     <div class="progress-group">
@@ -63,9 +63,9 @@
                                                     @php
                                                     if ($cs->intime != null && $cs->outime != null) {
                                                         if ($tf == 1) {
-                                                            echo e(date("H:i", strtotime($cs->intime)));
+                                                            echo e(date("h:i", strtotime($cs->intime)));
                                                             echo e(" - ");
-                                                            echo e(date("H:i", strtotime($cs->outime)));
+                                                            echo e(date("h:i", strtotime($cs->outime)));
                                                         } else {
                                                             echo e(date("H:i", strtotime($cs->intime)));
                                                             echo e(" - ");
@@ -174,7 +174,7 @@
                                     @endphp
                                 </td>
                                 <td>
-                                @isset($v->totalhours)
+                                    @isset($v->totalhours)
                                     @if($v->totalhours != null) 
                                         @php
                                             if(stripos($v->totalhours, ".") === false) {
@@ -196,14 +196,22 @@
                                 @endisset
                                 </td>
                                 <td>
-                                    @if($v->status_timein != '' && $v->status_timeout != '') 
-                                    <span class="@if($v->status_timein == 'Late In') red @else green @endif">{{ __("Retard") }}</span> |    
-                                    <span class="@if($v->status_timeout == 'Horaire respecté') orange @else blue @endif">{{ __("Départ anticipé") }}</span> 
-                                         @elseif($v->status_timein == 'Late In') 
-                                         <span class="red">{{ __("Retard") }}</span>
-                                         @else 
-                                         <span class="green">{{ __("A l'heure") }}</span>
-                                     @endif 
+
+                                    @if($v->status_timein != '') 
+                                        @if($v->status_timein == 'Late In')
+                                            <span class="red">{{ __("Retard") }}</span> | 
+                                        @else
+                                            <span class="green">{{ __("A l'heure") }}</span> | 
+                                        @endif
+                                    @endif
+                                    
+                                    @if($v->status_timeout != '') 
+                                        @if($v->status_timeout == 'Horaire respecté')
+                                            <span class="blue">{{ __("Horaire respecté") }}</span> 
+                                        @else
+                                            <span class="orange">{{ __("Départ anticipé") }}</span> 
+                                        @endif
+                                    @endif
                                     
                                 </td>
                                 

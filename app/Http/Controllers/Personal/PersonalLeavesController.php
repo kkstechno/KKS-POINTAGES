@@ -30,9 +30,9 @@ class PersonalLeavesController extends Controller
     {
 
         $v = $request->validate([
-            'type' => 'required|max:100',
-            'typeid' => 'required|digits_between:0,999|max:100',
-            'leavefrom' => 'required|date|max:15',
+            'type' => 'max:100',
+            'typeid' => 'digits_between:0,999|max:100',
+            //'leavefrom' => 'required|date|max:15',
             'leaveto' => 'required|date|max:15',
             'returndate' => 'required|date|max:15',
             'reason' => 'required|max:255',
@@ -41,7 +41,7 @@ class PersonalLeavesController extends Controller
         $typeid = $request->typeid;
         $type = mb_strtoupper($request->type);
         $reason = mb_strtoupper($request->reason);
-        $leavefrom = date("Y-m-d", strtotime($request->leavefrom));
+        $leavefrom = date("Y-m-d");
         $leaveto = date("Y-m-d", strtotime($request->leaveto));
         $returndate = date("Y-m-d", strtotime($request->returndate));
 
@@ -59,10 +59,10 @@ class PersonalLeavesController extends Controller
             'leaveto' => $leaveto,
             'returndate' => $returndate,
             'reason' => $reason,
-            'status' => 'Pending',
+            'status' => 'En attente',
         ]);
 
-        return redirect('personal/leaves/view')->with('success', trans("Demande de congé envoyée!"));
+        return redirect('personal/leaves/view')->with('success', trans("Votre Demande a été envoyée!"));
     }
 
     public function getPL(Request $request) 
@@ -114,7 +114,7 @@ class PersonalLeavesController extends Controller
         $v = $request->validate([
             'id' => 'required|max:200',
             'type' => 'required|max:100',
-            'leavefrom' => 'required|date|max:15',
+           // 'leavefrom' => 'required|date|max:15',
             'leaveto' => 'required|date|max:15',
             'returndate' => 'required|date|max:15',
             'reason' => 'required|max:255',
@@ -136,7 +136,7 @@ class PersonalLeavesController extends Controller
                     'reason' => $reason
                 ]);
 
-        return redirect('personal/leaves/view')->with('success', trans("Le congé est  mis à jour!"));
+        return redirect('personal/leaves/view')->with('success', trans("La demande a été modifiée!"));
     }
 
     public function delete($id, Request $request)
@@ -144,7 +144,7 @@ class PersonalLeavesController extends Controller
         
         table::leaves()->where('id', $id)->delete();
 
-        return redirect('personal/leaves/view')->with('success', trans("Le congé a été supprimé!"));
+        return redirect('personal/leaves/view')->with('success', trans("La demande a été supprimée!"));
     }
 
 }

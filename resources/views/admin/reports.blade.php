@@ -83,18 +83,6 @@
                                 @endisset
                             </td>
                         </tr>
-                        <!--tr>
-                            <td><a href="{{ url('reports/employee-birthdays') }}"><i class="ui icon birthday cake"></i> {{ __('Employee Birthdays') }}</a></td>
-                            <td class="odd">
-                                @isset($lastviews)
-                                    @foreach ($lastviews as $views)
-                                        @if($views->report_id == 7)
-                                            {{ $views->last_viewed }}
-                                        @endif
-                                    @endforeach
-                                @endisset
-                            </td>
-                        </tr-->
                         <tr>
                             <td><a href="{{ url('reports/user-accounts') }}"><i class="ui icon address book outline"></i> {{ __('Rapport des comptes d\'utilisateurs') }}</a></td>
                             <td class="odd">

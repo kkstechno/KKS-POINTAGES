@@ -1,7 +1,7 @@
 @extends('layouts.default')
     
     @section('meta')
-        <title>Reports | Workday Time Clock</title>
+        <title>Rapports Employés | KKS-POINTAGES</title>
         <meta name="description" content="Workday reports, view reports, and export or download reports">
     @endsection
 
@@ -9,8 +9,8 @@
     
     <div class="container-fluid">
         <div class="row">
-            <h2 class="page-title">{{ __("Employee List Report") }}
-                <a href="{{ url('export/report/employees') }}" class="ui basic button mini offsettop5 btn-export float-right"><i class="ui icon download"></i>{{ __("Export to CSV") }}</a>
+            <h2 class="page-title">{{ __("RAPPORT LISTE DES EMPLOYÉS") }}
+                <a href="{{ url('export/report/employees') }}" class="ui basic button mini offsettop5 btn-export float-right"><i class="ui icon download"></i>{{ __("Exporter au format CSV") }}</a>
                 <a href="{{ url('reports') }}" class="ui basic blue button mini offsettop5 float-right"><i class="ui icon chevron left"></i>{{ __("Return") }}</a>
             </h2>
         </div>
@@ -21,22 +21,20 @@
                     <table width="100%" class="table table-striped table-hover" id="dataTables-example" data-order='[[ 0, "asc" ]]'>
                         <thead>
                             <tr>
-                                <th>{{ __("Employee Name") }}</th>
-                                <th>{{ __("Age") }}</th>
-                                <th>{{ __("Gender") }}</th>
-                                <th>{{ __("Civil Status") }}</th>
-                                <th>{{ __("Mobile Number") }}</th>
+                                <th>{{ __("Nom Employé") }}</th>
+                                <th>{{ __("Genre") }}</th>
+                                <th>{{ __("Situation matrimoniale") }}</th>
+                                <th>{{ __("Contact") }}</th>
                                 <th>{{ __("Email") }}</th>
-                                <th>{{ __("Employment Type") }}</th>
-                                <th>{{ __("Employment Status") }}</th>
+                                <th>{{ __("Type Emploi") }}</th>
+                                <th>{{ __("Statut") }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @isset($empList)
                                 @foreach ($empList as $et)
                                     <tr>
-                                        <td>{{ $et->lastname }}, {{ $et->firstname }} {{ $et->mi }}</td>
-                                        <td>{{ $et->age }}</td>
+                                        <td>{{ $et->lastname }} {{ $et->firstname }}</td>
                                         <td>{{ $et->gender }}</td>
                                         <td>{{ $et->civilstatus }}</td>
                                         <td>{{ $et->mobileno }}</td>

@@ -33,7 +33,7 @@ class DashboardController extends Controller
         ->get();
 
 		$emp_typeR = table::people()
-        ->where('employmenttype', 'Regular')
+        ->where('employmenttype', 'CDI')
         ->where('employmentstatus', 'Active')
         ->count();
 
@@ -87,8 +87,8 @@ class DashboardController extends Controller
         ->count();
 
 		$emp_leaves_all = table::leaves()
-        ->where('status', 'Approved')
-        ->orWhere('status', 'Pending')
+        ->where('status', 'Approuvé')
+        ->orWhere('status', 'En attente')
         ->count();
 
         return view('admin.dashboard', compact('tf', 'emp_typeR', 'emp_typeT', 'emp_H', 'emp_A', 'emp_allActive', 'emp_leaves_pending', 'emp_leaves_approve', 'emp_leaves_all', 'emp_R', 'emp_F', 'emp_approved_leave', 'emp_all_type','a', 'is_online_now', 'is_offline_now'));

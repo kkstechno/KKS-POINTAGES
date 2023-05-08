@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
     @section('meta')
-        <title>Ajout Fonction |KKS-POINTAGES</title>
+        <title>Poste/Fonction | KKS-POINTAGES</title>
         <meta name="description" content="Workday job titles, view job titles, and export or download job titles.">
     @endsection
 
@@ -25,7 +25,7 @@
                     @if ($errors->any())
                     <div class="ui error message">
                         <i class="close icon"></i>
-                        <div class="header">{{ __("Erreur de validation") }}</div>
+                        <div class="header">{{ __("Erreur de validation !") }}</div>
                         <ul class="list">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -131,7 +131,7 @@
             document.getElementById("csvfile").value = "";
             $.notify({
                 icon: 'ui icon times',
-                message: "Please upload only CSV file format."
+                message: "Veuillez télécharger uniquement le format de fichier CSV."
             }, {
                 type: 'danger',
                 timer: 400

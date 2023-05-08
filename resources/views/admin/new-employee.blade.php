@@ -53,18 +53,17 @@
                                 <label>{{ __('Genre') }}</label>
                                 <select name="gender" class="ui dropdown uppercase">
                                     <option value="">Choisir Genre</option>
-                                    <option value="MALE">Homme</option>
-                                    <option value="FEMALE">Femme</option>
+                                    <option value="Homme">Homme</option>
+                                    <option value="Femme">Femme</option>
                                 </select>
                             </div>
                             <div class="field">
                                 <label>{{ __('Situtation Matrimoniale') }}</label>
                                 <select name="civilstatus" class="ui dropdown uppercase">
                                     <option value="">Choisir le statut</option>
-                                    <option value="SINGLE">Célibataire</option>
-                                    <option value="MARRIED">Marié(e)</option>
-                                    <option value="WIDOWED">Veuf(ve)</option>
-                                    <option value="LEGALLY SEPARATED">Divorcé(e)</option>
+                                    <option value="Célibataire">Célibataire</option>
+                                    <option value="Comcubinage">En Couple</option>
+                                    <option value="Marié">Marié(e)</option>
                                 </select>
                             </div>
                             <div class="two fields">
@@ -104,8 +103,8 @@
                                 <select name="company" class="ui search dropdown uppercase">
                                     <option value="">Choix Entreprise</option>
                                     @isset($company)
-                                        @foreach ($company as $data)
-                                            <option value="{{ $data->company }}"> {{ $data->company }}</option>
+                                    @foreach ($company as $data)
+                                    <option value="{{ $data->company }}"> {{ $data->company }}</option>
                                         @endforeach
                                     @endisset
                                 </select>
@@ -115,9 +114,9 @@
                                 <select name="department" class="ui search dropdown uppercase department">
                                     <option value="">Choix Département</option>
                                     @isset($department)
-                                        @foreach ($department as $data)
-                                            <option value="{{ $data->department }}"> {{ $data->department }}</option>
-                                        @endforeach
+                                    @foreach ($department as $data)
+                                    <option value="{{ $data->department }}"> {{ $data->department }}</option>
+                                    @endforeach
                                     @endisset
                                 </select>
                             </div>
@@ -128,52 +127,23 @@
                                     <i class="dropdown icon" tabindex="1"></i>
                                     <div class="default text">Sélectionner Poste</div>
                                     <div class="menu">
-                                    @isset($jobtitle)
+                                        @isset($jobtitle)
                                         @isset($department)
-                                            @foreach ($jobtitle as $data)
-                                                @foreach ($department as $dept)
-                                                    @if($dept->id == $data->dept_code)
-                                                        <div class="item" data-value="{{ $data->jobtitle }}" data-dept="{{ $dept->department }}">{{ $data->jobtitle }}</div>
-                                                    @endif
-                                                @endforeach
-                                            @endforeach
+                                        @foreach ($jobtitle as $data)
+                                        @foreach ($department as $dept)
+                                        @if($dept->id == $data->dept_code)
+                                        <div class="item" data-value="{{ $data->jobtitle }}" data-dept="{{ $dept->department }}">{{ $data->jobtitle }}</div>
+                                        @endif
+                                        @endforeach
+                                        @endforeach
                                         @endisset
-                                    @endisset
+                                        @endisset
                                     </div><br>  
                                 </div>
-                             <div class="field">
-                                <label>{{ __('Privilèges') }}</label>
-                                <select name="leaveprivilege" class="ui dropdown uppercase">
-                                    <option value="">Choisir Privilège</option>
-                                    @isset($leavegroup) 
-                                        @foreach($leavegroup as $lg)
-                                            <option value="{{ $lg->id }}">{{ $lg->leavegroup }}</option>
-                                        @endforeach
-                                    @endisset
-                                </select>
-                            </div>
+                                <h4 class="ui dividing header">{{ __('Information d\'emploi') }}</h4>
+
                             </div>
 
-
-                            <h4 class="ui dividing header">{{ __('Information d\'emploi') }}</h4>
-                            <div class="field">
-                                <label>{{ __('Type d\'emploi ') }}</label>
-                                <select name="employmenttype" class="ui dropdown uppercase">
-                                    <option value="">Choisir Type</option>
-                                    <option value="Regular">CDI</option>
-                                    <option value="Trainee">CDD</option>
-                                    <option value="Trainee">STAGE</option>
-
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label>{{ __(' Statut') }}</label>
-                                <select name="employmentstatus" class="ui dropdown uppercase">
-                                    <option value="">Choisir Statut</option>
-                                    <option value="Active">Activé</option>
-                                    <option value="Archived">Archivé</option>
-                                </select>
-                            </div>
                             <div class="field">
                                 <label>{{ __('Date (Prise de fonction)') }}</label>
                                 <input type="text" name="startdate" value="" class="airdatepicker uppercase" data-position="top right" placeholder="Date">
@@ -181,6 +151,25 @@
                             <div class="field">
                                 <label>{{ __('Date d\'Embauche') }}</label>
                                 <input type="text" name="dateregularized" value="" class="airdatepicker uppercase" data-position="top right" placeholder="Date">
+                            </div>
+
+                            <div class="field">
+                                <label>{{ __('Type d\'emploi ') }}</label>
+                                <select name="employmenttype" class="ui dropdown uppercase">
+                                    <option value="">Choisir Type</option>
+                                    <option value="CDI">CDI</option>
+                                    <option value="CDD">CDD</option>
+                                    <option value="STAGE">STAGE</option>
+
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>{{ __(' Statut') }}</label>
+                                <select name="employmentstatus" class="ui dropdown uppercase">
+                                    <option value="">Choisir Statut</option>
+                                    <option value="Activé">Activé</option>
+                                    <option value="Archivé">Archivé</option>
+                                </select>
                             </div>
                             <br>
                         </div>
@@ -210,10 +199,8 @@
     <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/datepicker.min.js') }}"></script>
     <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.en.js') }}"></script>
     <script type="text/javascript">
-    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.fr.js') }}"></script>
 
    $('.airdatepicker').datepicker({ language: 'en', dateFormat: 'dd-mm-yyyy', autoClose: true });
-   // $('.airdatepicker').datepicker({ language: 'fr', dateFormat: 'yyyy-mm-dd', autoClose: true });
 
     
     $('.ui.dropdown.department').dropdown({ onChange: function(value, text, $selectedItem) {

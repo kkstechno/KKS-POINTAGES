@@ -5,35 +5,25 @@
         @csrf
         <div class="field">
             <label>{{ __("Type de congés") }}</label>
-            <select class="ui dropdown uppercase getid" name="type">
-                <option value="">--Choisir Type--</option>
-                @isset($lt)
-                    @foreach ($lt as $data)
-                        @foreach($rights as $p)
-                            @if($p == $data->id)
-                                <option value="{{ $data->leavetype }}" data-id="{{ $data->id }}">{{ $data->leavetype }}</option>
-                            @endif
-                        @endforeach
-                    @endforeach
-                @endisset
+            <select name="type" class="ui dropdown uppercase">
+                <option value="">Choisir Genre</option>
+                <option value="Conge">Demande de congé</option>
+                <option value="Permission">Permission d'absence</option>
             </select>
         </div>
         <div class="two fields">
-            <div class="field">
-                <label for="">{{ __("Date de Soumission") }}</label>
-                <input id="leavefrom" type="text" placeholder="Envoyé le" name="leavefrom" class="airdatepicker uppercase" />
-            </div>
+
             <div class="field">
                 <label for="">{{ __("Date Départ") }}</label>
-                <input id="leaveto" type="text" placeholder="Du" name="leaveto" class="airdatepicker uppercase" />
+                <input id="leaveto" type="text" placeholder="Du" name="leaveto" class="airdatepicker underpercase" />
             </div>
-        </div>
+            <div class="field">
+                <label for="">{{ __("Date Retour") }}</label>
+                <input id="returndate" type="text" placeholder="Au" name="returndate" class="airdatepicker underpercase" />
+            </div>
+        </div> 
         <div class="field">
-            <label for="">{{ __("Date Retour") }}</label>
-            <input id="returndate" type="text" placeholder="Au" name="returndate" class="airdatepicker uppercase" />
-        </div>
-        <div class="field">
-            <label>{{ __("Raison") }}</label>
+            <label>{{ __("Motifs/Raisons") }}</label>
             <textarea class="uppercase" rows="5" name="reason" value=""></textarea>
         </div>
         <div class="field">

@@ -97,14 +97,7 @@
                         <i class="ui icon calendar plus outline"></i>
                         <p>{{ __('Congés') }}</p>
                     </a>
-                </li>
-                <li class="">
-                    <a href="{{ url('fields/leavetype') }}">
-                        <i class="ui icon calendar alternate outline"></i>
-                        <p>{{ __('Type de congé') }}</p>
-                        <hr>
-                    </a>
-                </li>
+                </li><hr>
                 <li>
                     <a href="{{ url('users') }}">
                         <i class="ui icon user circle outline"></i>
@@ -149,7 +142,6 @@
                                       <a href="{{ url('fields/company') }}" class="item"><i class="ui icon university"></i>{{ __('Entreprise') }}</a>
                                       <a href="{{ url('fields/department') }}" class="item"><i class="ui icon cubes"></i>{{ __('Departement') }}</a>
                                       <a href="{{ url('fields/jobtitle') }}" class="item"><i class="ui icon pencil alternate"></i>{{ __('Fonction') }}</a>
-                                      <a href="{{ url('fields/leavetype') }}" class="item"><i class="ui icon calendar alternate outline"></i>{{ __('Type de congé') }}</a>
                                     </div>
                               </div>
                             </li>

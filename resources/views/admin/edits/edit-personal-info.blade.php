@@ -1,7 +1,7 @@
 @extends('layouts.default')
     
     @section('meta')
-        <title>Edition Profil Employé | KKS-Presence</title>
+        <title>Edition Profil | KKS-POINTAGES</title>
         <meta name="description" content="Workday edit employee profile.">
     @endsection 
 
@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="page-title">{{ __('Edition Profil Employé') }}
+                <h2 class="page-title">{{ __('Modifier information - Collaborateur') }}
                     <a href="{{ url('employees') }}" class="ui basic blue button mini offsettop5 float-right"><i class="ui icon chevron left"></i>{{ __('Return') }}</a>
                 </h2>
             </div>    
@@ -41,36 +41,38 @@
                     <div class="box box-success">
                         <div class="box-header with-border">{{ __('Renseignements personnels') }}</div>
                         <div class="box-body">
-                            <div class="two fields">
+
                             <div class="field">
                                 <label>{{ __('ID Employé') }}</label>
-                                <input type="text" class="uppercase" name="idno" value="@isset($company_details->idno){{ $company_details->idno }}@endisset" readonly>
+                                <input style="color:red;" type="text" class="uppercase" name="idno" value="@isset($company_details->idno){{ $company_details->idno }}@endisset" readonly>
                             </div>
+                            <div class="two fields">
                                 <div class="field">
                                     <label>{{ __('Prénom') }}</label>
                                     <input type="text" class="uppercase" name="firstname" value="@isset($person_details->firstname){{ $person_details->firstname }}@endisset">
                                 </div>
-                            </div>
-                            <div class="field">
+
+                                  <div class="field">
                                 <label>{{ __('Nom de Famille') }}</label>
                                 <input type="text" class="uppercase" name="lastname" value="@isset($person_details->lastname){{ $person_details->lastname }}@endisset">
+                                  </div>
                             </div>
+
                             <div class="field">
                                 <label>{{ __('Genre') }}</label>
                                 <select name="gender" class="ui dropdown uppercase">
                                     <option value="">Choisir Genre</option>
-                                    <option value="MALE" @isset($person_details->gender) @if($person_details->gender == 'MALE') selected @endif @endisset>Homme</option>
-                                    <option value="FEMALE" @isset($person_details->gender) @if($person_details->gender == 'FEMALE') selected @endif @endisset>Femme</option>
+                                    <option value="Homme" @isset($person_details->gender) @if($person_details->gender == 'Homme') selected @endif @endisset>Homme</option>
+                                    <option value="Femme" @isset($person_details->gender) @if($person_details->gender == 'Femme') selected @endif @endisset>Femme</option>
                                 </select>
                             </div>
                             <div class="field">
                                  <label>{{ __('Situtation Matrimoniale') }}</label>
                                 <select name="civilstatus" class="ui dropdown uppercase">
                                     <option value="">Choisir le statut</option>
-                                    <option value="SINGLE" @isset($person_details->civilstatus) @if($person_details->civilstatus == 'SINGLE') selected @endif @endisset>Célibataire</option>
-                                    <option value="MARRIED" @isset($person_details->civilstatus) @if($person_details->civilstatus == 'MARRIED') selected @endif @endisset>Marié(e)</option>
-                                    <option value="WIDOWED" @isset($person_details->civilstatus) @if($person_details->civilstatus == 'WIDOWED') selected @endif @endisset>Veuf(ve)</option>
-                                    <option value="LEGALLY SEPARATED" @isset($person_details->civilstatus) @if($person_details->civilstatus == 'LEGALLY SEPARATED') selected @endif @endisset>Divorcé(e)</option>
+                                    <option value="Célibataire">Célibataire</option>
+                                    <option value="Comcubinage">En Couple</option>
+                                    <option value="Marié">Marié(e)</option>                                
                                 </select>
                             </div>
                             <div class="two fields">
@@ -89,7 +91,7 @@
                             </div>
                             <div class="field">
                                 <label>{{ __('Adresse du domicile') }}</label>
-                                <input type="text" class="uppercase" name="homeaddress" value="@isset($person_details->homeaddress){{ $person_details->homeaddress }}@endisset" placeholder="House/Unit Number, Building, Street, City, Province, Country">
+                                <input type="text" class="uppercase" name="homeaddress" value="@isset($person_details->homeaddress){{ $person_details->homeaddress }}@endisset" placeholder="">
                             </div>
                             <div class="field">
                                 <label>{{ __('Photo de Profil') }}</label>
@@ -147,33 +149,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="field">
-                                <label>{{ __('Privilèges') }}</label>
-                                <select name="leaveprivilege" class="ui dropdown uppercase">
-                                <option value="">Choisir Privilège</option>
-                                    @isset($leavegroup) 
-                                        @foreach($leavegroup as $lg)
-                                            <option value="{{ $lg->id }}" @isset($company_details->leaveprivilege) @if($lg->id == $company_details->leaveprivilege) selected @endif @endisset>{{ $lg->leavegroup }}</option>
-                                        @endforeach
-                                    @endisset
-                                </select>
-                            </div>
                             <h4 class="ui dividing header">{{ __('Information d\'emploi') }}</h4>
                             <div class="field">
                                 <label>{{ __('Type d\'emploi ') }}</label>
                                 <select name="employmenttype" class="ui dropdown uppercase">
                                     <option value="">Choisir Type</option>
-                                    <option value="Regular" @isset($person_details->employmenttype) @if($person_details->employmenttype == 'Regular') selected @endif @endisset>CDI</option>
-                                    <option value="Trainee" @isset($person_details->employmenttype) @if($person_details->employmenttype == 'Trainee') selected @endif @endisset>CDD</option>
-                                    <option value="Trainee" @isset($person_details->employmenttype) @if($person_details->employmenttype == 'Trainee') selected @endif @endisset>STAGE</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label>{{ __('Statut') }}</label>
-                                <select name="employmentstatus" class="ui dropdown uppercase">
-                                    <option value="">Choisir Statut</option>
-                                    <option value="Active" @isset($person_details->employmentstatus) @if($person_details->employmentstatus == 'Active') selected @endif @endisset>Activé</option>
-                                    <option value="Archived" @isset($person_details->employmentstatus) @if($person_details->employmentstatus == 'Archived') selected @endif @endisset>Archivé</option>
+                                    <option value="CDI" @isset($person_details->employmenttype) @if($person_details->employmenttype == 'CDI') selected @endif @endisset>CDI</option>
+                                    <option value="CDD" @isset($person_details->employmenttype) @if($person_details->employmenttype == 'CDD') selected @endif @endisset>CDD</option>
+                                    <option value="STAGE" @isset($person_details->employmenttype) @if($person_details->employmenttype == 'STAGE') selected @endif @endisset>STAGE</option>
                                 </select>
                             </div>
                             <div class="field">
@@ -185,6 +168,14 @@
                                 <input type="text" name="dateregularized" value="@isset($company_details->dateregularized){{ $company_details->dateregularized }}@endisset" class="airdatepicker" placeholder="Embauché le">
                             </div>
                             <br>
+                            <div class="field">
+                                <label>{{ __('Statut') }}</label>
+                                <select name="employmentstatus" class="ui dropdown uppercase">
+                                    <option value="">Choisir Statut</option>
+                                    <option value="Activé" @isset($person_details->employmentstatus) @if($person_details->employmentstatus == 'Activé') selected @endif @endisset>Activé</option>
+                                    <option value="Archivé" @isset($person_details->employmentstatus) @if($person_details->employmentstatus == 'Archivé') selected @endif @endisset>Archivé</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -212,10 +203,13 @@
 
     @section('scripts')
     <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/datepicker.min.js') }}"></script>
-    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.en.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.fr.js') }}"></script>
+
+    
     
     <script type="text/javascript">
-        $('.airdatepicker').datepicker({ language: 'en', dateFormat: 'dd-mm-yyyy' });
+        $('.airdatepicker').datepicker({ language: 'fr', dateFormat: 'yyyy-mm-dd', autoClose: true });
+
         $('.ui.dropdown.department').dropdown({ onChange: function(value, text, $selectedItem) {
             $('.jobposition .menu .item').addClass('hide');
             $('.jobposition .text').text('');
@@ -234,7 +228,7 @@
                 document.getElementById("imagefile").value="";
                 $.notify({
                 icon: 'ui icon times',
-                message: "Please upload only jpg/jpeg and png image formats."},
+                message: "Veuillez télécharger uniquement les formats d'image jpg/jpeg et png."},
                 {type: 'danger',timer: 400});
             }
         }

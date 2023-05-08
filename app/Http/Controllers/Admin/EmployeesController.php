@@ -1,11 +1,5 @@
 <?php
-/*
-* Workday - A time clock application for employees
-* Email: official.codefactor@gmail.com
-* Version: 1.1
-* Author: Brian Luna
-* Copyright 2020 Codefactor
-*/
+
 namespace App\Http\Controllers\admin;
 use DB;
 use App\Classes\table;
@@ -29,23 +23,23 @@ class EmployeesController extends Controller
 
 		$emp_typeT = table::people()
 		->where('employmenttype', 'Trainee')
-		->where('employmentstatus', 'Active')
+		->where('employmentstatus', 'Activé')
 		->count();
 
 		$emp_genderM = table::people()
-		->where('gender', 'Male')
+		->where('gender', 'Homme')
 		->count();
 
 		$emp_genderR = table::people()
-		->where('gender', 'Female')
+		->where('gender', 'Femme')
 		->count();
 
 		$emp_allActive = table::people()
-		->where('employmentstatus', 'Active')
+		->where('employmentstatus', 'Activé')
 		->count();
 
 		$emp_allArchive = table::people()
-		->where('employmentstatus', 'Archive')
+		->where('employmentstatus', 'Archivé')
 		->count();
 
 		$data = table::people()
@@ -126,7 +120,7 @@ class EmployeesController extends Controller
 		$department = mb_strtoupper($request->department);
 		$jobposition = mb_strtoupper($request->jobposition);
 		$companyemail = mb_strtolower($request->companyemail);
-		$leaveprivilege = $request->leaveprivilege;
+		//$leaveprivilege = $request->leaveprivilege;
 		$idno=substr($lastname,2,1).substr($firstname, -1). date('His');
 		//$idno = mb_strtoupper($request->idno);
 		$employmenttype = $request->employmenttype;
@@ -183,7 +177,7 @@ class EmployeesController extends Controller
 				'department' => $department,
 				'jobposition' => $jobposition,
 				'companyemail' => $companyemail,
-				'leaveprivilege' => $leaveprivilege,
+				//'leaveprivilege' => $leaveprivilege,
 				'idno' => $idno,
 				'startdate' => $startdate,
 				'dateregularized' => $dateregularized,

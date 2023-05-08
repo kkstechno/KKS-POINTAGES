@@ -39,7 +39,7 @@
                             <td>{{ $employee->company }}</td>
                             <td>{{ $employee->department }}</td>
                             <td>{{ $employee->jobposition }}</td>
-                            <td>@if($employee->employmentstatus == 'Active') <span style="color:green;">Activé</span> @else <span style="color:grey;">Archivé</span> @endif</td>
+                            <td>@if($employee->employmentstatus == 'Activé') <span style="color:green;">Activé</span> @else <span style="color:grey;">Archivé</span> @endif</td>
                             <td class="align-right">
                             <a href="{{ url('/profile/view/'.$employee->reference) }}" class="ui circular basic icon button tiny"><i class="file alternate outline icon"></i></a>
                             <a href="{{ url('/profile/edit/'.$employee->reference) }}" class="ui circular basic icon button tiny"><i class="edit outline icon"></i></a>

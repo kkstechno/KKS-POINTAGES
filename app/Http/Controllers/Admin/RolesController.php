@@ -1,11 +1,5 @@
 <?php
-/*
-* Workday - A time clock application for employees
-* Email: official.codefactor@gmail.com
-* Version: 1.1
-* Author: Brian Luna
-* Copyright 2020 Codefactor
-*/
+
 namespace App\Http\Controllers\admin;
 use DB;
 use App\Classes\table;
@@ -45,7 +39,7 @@ class RolesController extends Controller
             ],
     	]);
 
-    	return redirect('users/roles')->with('success', trans("New user role has been added!"));
+    	return redirect('users/roles')->with('success', trans("Un nouveau rôle d'utilisateur a été ajouté !"));
     }
 
 
@@ -55,7 +49,7 @@ class RolesController extends Controller
 
         table::roles()->where('id', $id)->delete();
 
-        return redirect('users/roles')->with('success', trans("User role has been deleted!"));
+        return redirect('users/roles')->with('success', trans("Le rôle d'utilisateur a été supprimé !"));
     }
 
     public function get(Request $request) 
@@ -98,7 +92,7 @@ class RolesController extends Controller
             'state' => $state
         ]);
 
-        return redirect('users/roles')->with('success', trans("User role has been updated!"));
+        return redirect('users/roles')->with('success', trans("Le rôle de l'utilisateur a été mis à jour !"));
     }
 
     public function editperm($id) 
@@ -137,7 +131,7 @@ class RolesController extends Controller
             }
         }
 
-        return redirect('users/roles/')->with('success', trans("User permission has been updated!"));
+        return redirect('users/roles/')->with('success', trans("L'autorisation de l'utilisateur a été mise à jour !"));
     }
 
 }

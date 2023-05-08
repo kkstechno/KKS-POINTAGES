@@ -91,35 +91,44 @@
                                 </td>
                                 <td>
                                     @isset($d->totalhours)
-                                    @if($d->totalhours != null) 
-                                        @php
-                                            if(stripos($d->totalhours, ".") === false) {
-                                                $h = $d->totalhours;
-                                                $m = "00"; // Initialisation de $m à "00"
-                                            } else {
-                                                $HM = explode('.', $d->totalhours); 
-                                                $h = $HM[0]; 
-                                                $m = str_pad($HM[1], 2, "0", STR_PAD_LEFT); // Formatage de $m au format 00
-                                            }
-                                            $h = str_pad($h, 2, "0", STR_PAD_LEFT); // Formatage de $h au format 00
-                                        @endphp
-                                    @endif
-                                    @if($d->totalhours != null)
-                                        {{ $h }} H {{ $m }} mn
-                                    @endif
-                                @endisset
+                                        @if($d->totalhours != null) 
+                                            @php
+                                                if(stripos($d->totalhours, ".") === false) {
+                                                    $h = $d->totalhours;
+                                                } else {
+                                                    $HM = explode('.', $d->totalhours); 
+                                                    $h = $HM[0]; 
+                                                    $m = $HM[1];
+                                                }
+                                            @endphp
+                                        @endif
+                                        @if($d->totalhours != null)
+                                            @if(stripos($d->totalhours, ".") === false) 
+                                                {{ $h }} H
+                                            @else 
+                                                {{ $h }} H {{ $m }} mn
+                                            @endif
+                                        @endif
+                                    @endisset
                                 
                                 </td>
 
                                 <td>
-                                    @if($d->status_timein != '' && $d->status_timeout != '') 
-                                    <span class="@if($d->status_timein == 'Late In') red @else green @endif">{{ __("Retard") }}</span> |    
-                                    <span class="@if($d->status_timeout == 'Horaire respecté') orange @else blue @endif">{{ __("Départ anticipé") }}</span> 
-                                         @elseif($d->status_timein == 'Late In') 
-                                         <span class="red">{{ __("Retard") }}</span>
-                                         @else 
-                                         <span class="green">{{ __("A l'heure") }}</span>
-                                     @endif 
+                                    @if($d->status_timein != '') 
+                                        @if($d->status_timein == 'Late In')
+                                            <span class="red">{{ __("Retard") }}</span> | 
+                                        @else
+                                            <span class="green">{{ __("A l'heure") }}</span> | 
+                                        @endif
+                                    @endif
+                                    
+                                    @if($d->status_timeout != '') 
+                                        @if($d->status_timeout == 'Horaire respecté')
+                                            <span class="blue">{{ __("Horaire respecté") }}</span> 
+                                        @else
+                                            <span class="orange">{{ __("Départ anticipé") }}</span> 
+                                        @endif
+                                    @endif
                                 </td>                 
                                 @isset($ss)
                                     @if($ss->clock_comment == "on")
