@@ -1,14 +1,4 @@
-/*
-* Workday - A time clock application for employees
-* Email: official.codefactor@gmail.com
-* Version: 1.1
-* Author: Brian Luna
-* Copyright 2020 Codefactor
-*/
 
-/*
- * Semantic UI components initialization
- */
 $('.dropdown').dropdown();
 $('.ui.dropdown').dropdown();
 $('.ui.checkbox').checkbox();
@@ -106,35 +96,35 @@ $('#add_employee_form, #edit_employee_form').form({
             identifier: 'firstname',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a First name'
+                prompt: 'Veuillez saisir votre prénom'
             }]
         },
         lastname: {
             identifier: 'lastname',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Last name'
+                prompt: 'Veuillez entrer un nom de famille'
             }]
         },
         emailaddress: {
             identifier: 'emailaddress',
             rules: [{
                 type: 'email',
-                prompt: 'Please enter an Email address'
+                prompt: 'Entrez une adresse Email s\'il vous plaît'
             }]
         },
         idno: {
             identifier: 'idno',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter an ID number'
+                prompt: 'Veuillez entrer un numéro ID'
             }]
         },
         employmentstatus: {
             identifier: 'employmentstatus',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select an Employment status'
+                prompt: 'Veuillez sélectionner un statut d\'emploi'
             }]
         },
     }
@@ -146,35 +136,35 @@ $('#edit_attendance_form').form({
             identifier: 'employee',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Employee'
+                prompt: '   Veuillez saisir un employé'
             }]
         },
         date: {
             identifier: 'date',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Date'
+                prompt: 'Veuillez saisir une date'
             }]
         },
         timein: {
             identifier: 'timein',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter Time In'
+                prompt: 'Veuillez saisir l\'heure d\'arrivée'
             }]
         },
         timeout: {
             identifier: 'timeout',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter Time Out'
+                prompt: 'Veuillez saisir l\'heure de Départ'
             }]
         },
         reason: {
             identifier: 'reason',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Reason'
+                prompt: 'Veuillez entrer le motif'
             }]
         },
     }
@@ -186,42 +176,42 @@ $('#add_schedule_form, #edit_schedule_form').form({
             identifier: 'employee',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select a Employee'
+                prompt: 'Veuillez sélectionner un employé'
             }]
         },
         intime: {
             identifier: 'intime',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Start time'
+                prompt: 'Veuillez entrer une heure de début'
             }]
         },
         outime: {
             identifier: 'outime',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter an Off time'
+                prompt: 'Veuillez saisir une heure d\'arrêt'
             }]
         },
         datefrom: {
             identifier: 'datefrom',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a From date'
+                prompt: 'Veuillez saisir une date de début'
             }]
         },
         dateto: {
             identifier: 'dateto',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a To date'
+                prompt: 'Veuillez saisir une date de fin'
             }]
         },
         hours: {
             identifier: 'hours',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Total hours'
+                prompt: 'Veuillez saisir un nombre total d\'heures'
             }]
         },
     }
@@ -233,7 +223,7 @@ $('#edit_leave_form').form({
             identifier: 'status',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select a Status'
+                prompt: 'Veuillez sélectionner un statut'
             }]
         },
     }
@@ -245,49 +235,49 @@ $('#add_user_form').form({
             identifier: 'name',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select an Employee'
+                prompt: 'Veuillez sélectionner un employé'
             }]
         },
         email: {
             identifier: 'email',
             rules: [{
                 type: 'email',
-                prompt: 'Please enter an Email address'
+                prompt: 'Entrez une adresse mail s\'il vous plaît'
             }]
         },
         acc_type: {
             identifier: 'acc_type',
             rules: [{
                 type: 'checked',
-                prompt: 'Please choose Account type'
+                prompt: 'Veuillez choisir le type de compte'
             }]
         },
         role_id: {
             identifier: 'role_id',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select a Role'
+                prompt: 'Veuillez sélectionner un rôle'
             }]
         },
         status: {
             identifier: 'status',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select a Status'
+                prompt: 'Veuillez sélectionner un statut'
             }]
         },
         password: {
             identifier: 'password',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Password'
+                prompt: 'Veuillez entrer un mot de passe'
             }]
         },
         password_confirmation: {
             identifier: 'password_confirmation',
             rules: [{
                 type: 'match[password]',
-                prompt: 'Please confirm Password'
+                prompt: 'Veuillez confirmer le mot de passe'
             }]
         },
     }
@@ -299,35 +289,35 @@ $('#edit_user_form').form({
             identifier: 'name',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select an Employee'
+                prompt: 'Veuillez sélectionner un employé'
             }]
         },
         email: {
             identifier: 'email',
             rules: [{
                 type: 'email',
-                prompt: 'Please enter an Email address'
+                prompt: 'Entrez une adresse mail s\'il vous plaît'
             }]
         },
         acc_type: {
             identifier: 'acc_type',
             rules: [{
                 type: 'checked',
-                prompt: 'Please choose Account type'
+                prompt: 'Veuillez choisir le type de compte'
             }]
         },
         role_id: {
             identifier: 'role_id',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select a Role'
+                prompt: 'Veuillez sélectionner un rôle'
             }]
         },
         status: {
             identifier: 'status',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select a Status'
+                prompt: 'Veuillez sélectionner un statut'
             }]
         },
     }
@@ -339,14 +329,14 @@ $('#add_role_form, #edit_role_form').form({
             identifier: 'role_name',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Role name'
+                prompt: 'Veuillez entrer un nom de rôle'
             }]
         },
         state: {
             identifier: 'state',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select a Status'
+                prompt: 'Veuillez sélectionner un statut'
             }]
         },
     }
@@ -358,7 +348,7 @@ $('#add_company_form').form({
             identifier: 'company',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Company name'
+                prompt: 'Veuillez saisir un nom d\'entreprise'
             }]
         },
     }
@@ -370,7 +360,7 @@ $('#add_department_form').form({
             identifier: 'department',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Department name'
+                prompt: 'Veuillez entrer un nom de département'
             }]
         },
     }
@@ -382,14 +372,14 @@ $('#add_jobtitle_form').form({
             identifier: 'department',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select a Department'
+                prompt: 'Veuillez sélectionner un département'
             }]
         },
         jobtitle: {
             identifier: 'jobtitle',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Job Title name'
+                prompt: '   Veuillez saisir un titre de poste'
             }]
         },
     }
@@ -401,21 +391,21 @@ $('#add_leavetype_form').form({
             identifier: 'leavetype',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Leave name'
+                prompt: 'Veuillez entrer un nom de congé'
             }]
         },
         limit: {
             identifier: 'limit',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Credit number'
+                prompt: 'Veuillez entrer un numéro de crédit'
             }]
         },
         percalendar: {
             identifier: 'percalendar',
             rules: [{
                 type: 'checked',
-                prompt: 'Please choose a Leave term'
+                prompt: 'Veuillez choisir une durée de congé'
             }]
         },
     }
@@ -427,28 +417,28 @@ $('#add_leavegroup_form, #edit_leavegroup_form').form({
             identifier: 'leavegroup',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Leave Group name'
+                prompt: 'Veuillez entrer un nom de groupe de congé'
             }]
         },
         description: {
             identifier: 'description',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Description'
+                prompt: 'Veuillez saisir une description'
             }]
         },
         "leaveprivileges[]": {
             identifier: 'leaveprivileges[]',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select a Leave privileges'
+                prompt: 'Veuillez sélectionner les privilèges'
             }]
         },
         status: {
             identifier: 'status',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select a Status'
+                prompt: 'Veuillez sélectionner un statut'
             }]
         },
     }
@@ -460,7 +450,7 @@ $('#request_personal_leave_form, #edit_request_personal_leave_form').form({
             identifier: 'type',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select a Leave type'
+                prompt: 'Veuillez sélectionner le type de congé'
             }]
         },
         leavefrom: {
@@ -474,21 +464,21 @@ $('#request_personal_leave_form, #edit_request_personal_leave_form').form({
             identifier: 'leaveto',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Leave date to'
+                prompt: 'Veuillez saisir la date de départ'
             }]
         },
         returndate: {
             identifier: 'returndate',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Return date'
+                prompt: 'Veuillez saisir la date de retour'
             }]
         },
         reason: {
             identifier: 'reason',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter a Reason'
+                prompt: 'Veuillez entrer la raison'
             }]
         },
     }
@@ -500,28 +490,28 @@ $('#edit_personal_info_form').form({
             identifier: 'firstname',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter your First name'
+                prompt: 'Entrez votre prénom s\'il vous plait'
             }]
         },
         lastname: {
             identifier: 'lastname',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter your Last name'
+                prompt: 'Veuillez entrer votre nom de famille'
             }]
         },
         gender: {
             identifier: 'gender',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select your Gender'
+                prompt: 'Veuillez sélectionner le genre'
             }]
         },
         civilstatus: {
             identifier: 'civilstatus',
             rules: [{
                 type: 'empty',
-                prompt: 'Please select your Civil status'
+                prompt: 'Veuillez sélectionner votre Statut matrimonial'
             }]
         },
         height: {
@@ -542,14 +532,14 @@ $('#edit_personal_info_form').form({
             identifier: 'emailaddress',
             rules: [{
                 type: 'email',
-                prompt: 'Please enter your Email address'
+                prompt: 'Veuillez saisir votre adresse e-mail'
             }]
         },
         mobileno: {
             identifier: 'mobileno',
             rules: [{
                 type: 'integer',
-                prompt: 'Please enter your Mobile phone number'
+                prompt: 'Veuillez entrer votre numéro de téléphone portable'
             }]
         },
         age: {
@@ -570,14 +560,14 @@ $('#edit_personal_info_form').form({
             identifier: 'birthplace',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter your Place of birth'
+                prompt: 'Veuillez entrer votre lieu de naissance'
             }]
         },
         homeaddress: {
             identifier: 'homeaddress',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter your Home address'
+                prompt: 'Veuillez saisir votre adresse personnelle'
             }]
         },
     }
@@ -589,21 +579,21 @@ $('#edit_personal_password_form').form({
             identifier: 'currentpassword',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter your Current password'
+                prompt: 'Veuillez entrer votre mot de passe actuel'
             }]
         },
         newpassword: {
             identifier: 'newpassword',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter your New password'
+                prompt: 'Veuillez entrer votre nouveau mot de passe'
             }]
         },
         confirmpassword: {
             identifier: 'confirmpassword',
             rules: [{
                 type: 'empty',
-                prompt: 'Please confirm your New password'
+                prompt: 'Veuillez confirmer votre nouveau mot de passe'
             }]
         },
     }
@@ -615,14 +605,14 @@ $('#edit_personal_user_form').form({
             identifier: 'name',
             rules: [{
                 type: 'empty',
-                prompt: 'Please enter your User name'
+                prompt: 'S\'il vous plaît entrez votre nom d\'utilisateur'
             }]
         },
         email: {
             identifier: 'email',
             rules: [{
                 type: 'email',
-                prompt: 'Please enter your User email'
+                prompt: 'Veuillez entrer votre email d\'utilisateur'
             }]
         },
     }

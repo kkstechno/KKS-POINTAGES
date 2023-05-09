@@ -6,7 +6,7 @@
         <div class="field">
             <label>{{ __("Type de congés") }}</label>
             <select name="type" class="ui dropdown uppercase">
-                <option value="">Choisir Genre</option>
+                <option value="">Choisir type</option>
                 <option value="Conge">Demande de congé</option>
                 <option value="Permission">Permission d'absence</option>
             </select>

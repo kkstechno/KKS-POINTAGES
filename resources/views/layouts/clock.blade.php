@@ -16,18 +16,12 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('/assets/vendor/semantic-ui/semantic.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/clock.css') }}">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="{{ asset('/assets/vendor/html5shiv/html5shiv.min.js') }}></script>
-            <script src="{{ asset('/assets/vendor/respond/respond.min.js') }}"></script>
-        <![endif]-->
 
         @yield('styles')
     </head>
     <body>
 
-    <img src="{{ asset('/assets/images/img/burmod.jpg') }}" class="wave">
+    <img src="{{ asset('/assets/images/img/bg04.jpg') }}" class="wave">
     <div class="wrapper">
         <div id="body">
             <div class="content">

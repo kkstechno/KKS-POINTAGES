@@ -1,7 +1,7 @@
 @extends('layouts.default')
     
     @section('meta')
-        <title>Edition Congé | KKS-Presence</title>
+        <title>Edition Demandes | KKS-POINTAGES</title>
         <meta name="description" content="Workday edit employee leave of absence.">
     @endsection 
 
@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="page-title">{{ __("EDITER CONGÉ") }}</h2>
+                <h2 class="page-title">{{ __("Modifier demandes") }}</h2>
             </div>    
         </div>
 

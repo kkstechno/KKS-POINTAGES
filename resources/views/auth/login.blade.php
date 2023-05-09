@@ -22,7 +22,7 @@
 
 <body>
 	<div id="wrapper">				
-		<div class="vertical-align-wrap" style="background:url(assets/images/img/burmod.jpg); background-size:cover; background-position:center;background-repeat: no-repeat;"">
+		<div class="vertical-align-wrap" style="background:url(assets/images/img/bg01.jpg); background-size:cover; background-position:center;background-repeat: no-repeat;"">
 
 			<div class="vertical-align-middle">
 				<div class="auth-box">	

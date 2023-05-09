@@ -22,7 +22,7 @@
                     @if ($errors->any())
                     <div class="ui error message">
                         <i class="close icon"></i>
-                        <div class="header">{{ __("Erreur de validation") }}</div>
+                        <div class="header">{{ __("Erreur de validation !") }}</div>
                         <ul class="list">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>

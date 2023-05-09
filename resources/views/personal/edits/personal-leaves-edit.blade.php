@@ -21,14 +21,12 @@
                 <form id="edit_request_personal_leave_form" action="{{ url('personal/leaves/update') }}" class="ui form" method="post" accept-charset="utf-8">
                     @csrf
                     <div class="field">
-                        <label>{{ __("Type Congé") }}</label>
-                        <select class="ui dropdown uppercase" name="type">
-                            @isset($lt))
-                            @foreach ($lt as $data)
-                                <option value="{{ $data->leavetype }}" @if($data->leavetype == $type) selected @endif>{{ $data->leavetype }}</option>
-                            @endforeach
-                            @endisset
-                        </select>
+                            <label>{{ __("Type de congés") }}</label>
+                            <select name="type" class="ui dropdown uppercase">
+                                <option value="">Choisir type</option>
+                                <option value="Conge">Demande de congé</option>
+                                <option value="Permission">Permission d'absence</option>
+                            </select>
                     </div>
                     <div class="two fields">
                         <div class="field">
@@ -42,7 +40,7 @@
                     </div>
                     <div class="field">
                         <label for="">{{ __("Date Retour") }}</label>
-                        <input id="returndate" type="text" placeholder="Enter Return date" name="returndate" class="airdatepicker uppercase" value="@isset($l->returndate){{ $l->returndate }}@endisset"/>
+                        <input id="returndate" type="text" placeholder="" name="returndate" class="airdatepicker uppercase" value="@isset($l->returndate){{ $l->returndate }}@endisset"/>
                     </div>
                     <div class="field">
                         <label>{{ __("Motifs/Raisons") }}</label>
@@ -73,11 +71,8 @@
     @section('scripts')
     <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/datepicker.min.js') }}"></script>
     <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.fr.js') }}"></script>
-
-   {{--  <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.en.js') }}"></script> --}}
-
     <script type="text/javascript">
-       // $('.airdatepicker').datepicker({ language: 'en', dateFormat: 'yyyy-mm-dd' });
+
        $('.airdatepicker').datepicker({ language: 'fr', dateFormat: 'yyyy-mm-dd', autoClose: true });
 
     </script>

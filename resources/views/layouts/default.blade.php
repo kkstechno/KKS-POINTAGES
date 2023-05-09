@@ -19,12 +19,6 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('/assets/vendor/flag-icon-css/css/flag-icon.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/style.css') }}">
         
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="{{ asset('/assets/vendor/html5shiv/html5shiv.min.js') }}></script>
-            <script src="{{ asset('/assets/vendor/respond/respond.min.js') }}"></script>
-        <![endif]-->
 
         @yield('styles')
     </head>
