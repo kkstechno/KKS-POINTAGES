@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
     @section('meta')
-        <title>Reports | Workday Time Clock</title>
+        <title>Rapports | KKS-POINTAGES</title>
         <meta name="description" content="Workday reports, view reports, and export or download reports.">
     @endsection
 
@@ -9,9 +9,9 @@
     
     <div class="container-fluid">
         <div class="row">
-            <h2 class="page-title">{{ __("User Accounts Report") }}
-                <a href="{{ url('export/report/accounts') }}" class="ui basic button mini offsettop5 btn-export float-right"><i class="ui icon download"></i>{{ __("Export to CSV") }}</a>
-                <a href="{{ url('reports') }}" class="ui basic blue button mini offsettop5 float-right"><i class="ui icon chevron left"></i>{{ __("Return") }}</a>
+            <h2 class="page-title">{{ __("RAPPORT DES COMPTES D'UTILISATEURS") }}
+                <a href="{{ url('export/report/accounts') }}" class="ui basic button mini offsettop5 btn-export float-right"><i class="ui icon download"></i>{{ __("Exporter au format CSV") }}</a>
+                <a href="{{ url('reports') }}" class="ui basic blue button mini offsettop5 float-right"><i class="ui icon chevron left"></i>{{ __("Retour") }}</a>
             </h2> 
         </div>
 
@@ -21,10 +21,10 @@
                     <table width="100%" class="table table-striped table-hover" id="dataTables-example" data-order='[[ 0, "asc" ]]'>
                         <thead>
                             <tr>
-                                <th>{{ __("Employee Name") }}</th>
+                                <th>{{ __("Nom Employé") }}</th>
                                 <th>{{ __("Email") }}</th>
-                                <th>{{ __("Account Type") }}</th>
-                                <th>{{ __("Status") }}</th>
+                                <th>{{ __("Type de compte") }}</th>
+                                <th>{{ __("Statut") }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,7 +34,7 @@
                                         <td>{{ $v->name }}</td>
                                         <td>{{ $v->email }}</td>
                                         <td>@if( $v->acc_type == 2) Admin @else Employee @endif</td>
-                                        <td>@if($v->status == 1) Active @endif @if($v->status == 0) Disabled @endif</td>
+                                        <td>@if($v->status == 1) Activé @endif @if($v->status == 0) Désactivé @endif</td>
                                     </tr>
                                 @endforeach
                             @endisset

@@ -41,6 +41,7 @@
             </div>
 
             <ul class="list-unstyled components">
+
                 <li class="">
                     <a href="{{ url('personal/dashboard') }}">
                         <i class="ui icon dashboard"></i>
@@ -53,7 +54,7 @@
                         <p>{{ __("PROFIL") }}</p>
                     </a>
                 </li>
-                <li class="">
+               <li class="">
                     <a href="{{ url('personal/attendance/view') }}">
                         <i class="ui icon clock outline"></i>
                         <p>{{ __("POINTAGES") }}</p>

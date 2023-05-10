@@ -33,10 +33,10 @@
                                     </div>
                                     <h3 class="ui sub header">{{ __("Gestion des Employés") }}</h3><hr>
                                     <div class="item">
-                                        <div class="ui master checkbox">
-                                            <input type="checkbox" @isset($d) @if(in_array('2', $d)==true) checked @endif @endisset name="perms[]" value="2">
-                                            <label>{{ __("Accéder à la page des Employés") }}</label>
-                                        </div>
+                                            <div class="ui master checkbox">
+                                                <input type="checkbox" @isset($d) @if(in_array('2', $d)==true) checked @endif @endisset name="perms[]" value="2">
+                                                <label>{{ __("Accéder à la page des Employés") }}</label>
+                                            </div>
                                         <div class="list">
                                             <div class="item">
                                                 <div class="ui child checkbox slider">

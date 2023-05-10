@@ -25,7 +25,7 @@ class RolesController extends Controller
         if (permission::permitted('roles-add')=='fail'){ return redirect()->route('denied'); }
 
         $v = $request->validate([
-            'role_name' => 'required|max:100',
+            'role_name' => 'required|max:100|unique:users_roles,role_name,except,id',
             'state' => 'required|max:20',
         ]);
 
@@ -92,7 +92,7 @@ class RolesController extends Controller
             'state' => $state
         ]);
 
-        return redirect('users/roles')->with('success', trans("Le rôle de l'utilisateur a été mis à jour !"));
+        return redirect('users/roles')->with('success', trans("Le rôle de l'utilisateur a été mis à jour!"));
     }
 
     public function editperm($id) 

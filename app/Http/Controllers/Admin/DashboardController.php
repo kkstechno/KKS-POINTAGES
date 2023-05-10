@@ -13,6 +13,8 @@ class DashboardController extends Controller
 
     public function index(Request $request) 
     {
+       // dd(auth()->user()->permissions());
+        
         if (permission::permitted('dashboard')=='fail'){ return redirect()->route('denied'); }
         
         $datenow = date('Y/m/d'); 

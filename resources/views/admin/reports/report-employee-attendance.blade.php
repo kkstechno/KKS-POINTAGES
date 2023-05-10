@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
     @section('meta')
-        <title>Rapport des Demandes | KKS-POINTAGES</title>
+        <title>Rapports | KKS-POINTAGES</title>
         <meta name="description" content="Workday reports, view reports, and export or download reports.">
     @endsection
 
@@ -13,7 +13,7 @@
     
     <div class="container-fluid">
         <div class="row">
-            <h2 class="page-title">{{ __("RAPPORT DES DEMANDES") }}
+            <h2 class="page-title">{{ __("RAPPORT DES POINTAGES") }}
                 <a href="{{ url('reports') }}" class="ui basic blue button mini offsettop5 float-right"><i class="ui icon chevron left"></i>{{ __("Retour") }}</a>
             </h2> 
         </div>
@@ -26,7 +26,7 @@
                         <div class="inline three fields">
                             <div class="three wide field">
                                 <select name="employee" class="ui search dropdown getid">
-                                    <option value="">{{ __("Employee") }}</option>
+                                    <option value="">{{ __("Employé(e)") }}</option>
                                     @isset($employee)
                                         @foreach($employee as $e)
                                             <option value="{{ $e->lastname }} {{ $e->firstname }}" data-id="{{ $e->idno }}">{{ $e->lastname }} {{ $e->firstname }}</option>

@@ -1,7 +1,7 @@
 @extends('layouts.default')
     
     @section('meta')
-        <title>Reports | Workday Time Clock</title>
+        <title>Rapports | KKS-POINTAGES</title>
         <meta name="description" content="Workday reports, view reports, and export or download reports">
     @endsection
     
@@ -13,8 +13,8 @@
     
     <div class="container-fluid">
         <div class="row">
-            <h2 class="page-title">{{ __("Employee Leaves Report") }}
-                <a href="{{ url('reports') }}" class="ui basic blue button mini offsettop5 float-right"><i class="ui icon chevron left"></i>{{ __("Return") }}</a>
+            <h2 class="page-title">{{ __("RAPPORT DES DEMANDES DE PERMISSION") }}
+                <a href="{{ url('reports') }}" class="ui basic blue button mini offsettop5 float-right"><i class="ui icon chevron left"></i>{{ __("Retour") }}</a>
             </h2>
         </div>
 
@@ -26,49 +26,51 @@
                         <div class="inline three fields">
                             <div class="three wide field">
                                 <select name="employee" class="ui search dropdown getid">
-                                    <option value="">{{ __("Employee") }}</option>
+                                    <option value="">{{ __("Employé") }}</option>
                                     @isset($employee)
                                         @foreach($employee as $e)
-                                            <option value="{{ $e->lastname }}, {{ $e->firstname }}" data-id="{{ $e->idno }}">{{ $e->lastname }}, {{ $e->firstname }}</option>
+                                            <option value="{{ $e->lastname }} {{ $e->firstname }}" data-id="{{ $e->idno }}">{{ $e->lastname }} {{ $e->firstname }}</option>
                                         @endforeach
                                     @endisset
                                 </select>
                             </div>
 
                             <div class="two wide field">
-                                <input id="datefrom" type="text" name="datefrom" value="" placeholder="Start Date" class="airdatepicker">
+                                <input id="datefrom" type="text" name="datefrom" value="" placeholder="Du" class="airdatepicker">
                                 <i class="ui icon calendar alternate outline calendar-icon"></i>
                             </div>
 
                             <div class="two wide field">
-                                <input id="dateto" type="text" name="dateto" value="" placeholder="End Date" class="airdatepicker">
+                                <input id="dateto" type="text" name="dateto" value="" placeholder="Au" class="airdatepicker">
                                 <i class="ui icon calendar alternate outline calendar-icon"></i>
                             </div>
                             <input type="hidden" name="emp_id" value="">
                             <button id="btnfilter" class="ui icon button positive small inline-button"><i class="ui icon filter alternate"></i> {{ __("Filter") }}</button>
-                            <button type="submit" name="submit" class="ui icon button blue small inline-button"><i class="ui icon download"></i> {{ __("Download") }}</button>
+                            <button type="submit" name="submit" class="ui icon button blue small inline-button"><i class="ui icon download"></i> {{ __("Télécharger") }}</button>
                         </div>
                     </form>
                     
                     <table width="100%" class="table table-striped table-hover" id="dataTables-example" data-order='[[ 0, "asc" ]]'>
                         <thead>
                             <tr>
-                                <th>{{ __("Employee Name") }}</th>
-                                <th>{{ __("Type") }}</th>
-                                <th>{{ __("Leave from") }} <span class="help">(date)</span></th>
-                                <th>{{ __("Leave to") }} <span class="help">(date)</span></th>
-                                <th>{{ __("Reason") }}</th>
-                                <th>{{ __("Status") }}</th>
+                                <th>{{ __("Soumis le") }}</th>
+                                <th>{{ __("Nom Employé") }}</th>
+                                <th>{{ __("Type de demande") }}</th>
+                                <th>{{ __("Date Départ") }}</th>
+                                <th>{{ __("Date Retour") }}</th>
+                                <th>{{ __("Motif/Raison") }}</th>
+                                <th>{{ __("Décision") }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @isset($empLeaves)
                             @foreach ($empLeaves as $v)
                                 <tr>
+                                    <td>@php echo e(date('d-m-Y', strtotime($v->leavefrom))) @endphp</td>
                                     <td>{{ $v->employee }}</td>
                                     <td>{{ $v->type }}</td>
-                                    <td>{{ $v->leavefrom }}</td>
-                                    <td>{{ $v->leaveto }}</td>
+                                    <td>@php echo e(date('d-m-Y', strtotime($v->leaveto))) @endphp</td>
+                                    <td>@php echo e(date('d-m-Y', strtotime($v->returndate))) @endphp</td>
                                     <td>{{ $v->reason }}</td>
                                     <td>{{ $v->status }}</td>
                                 </tr>
@@ -86,11 +88,13 @@
     
     @section('scripts')
     <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/datepicker.min.js') }}"></script>
-    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.en.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.fr.js') }}"></script>
+
 
     <script type="text/javascript">
     $('#dataTables-example').DataTable({responsive: true,pageLength: 15,lengthChange: false,searching: false,ordering: true});
-    $('.airdatepicker').datepicker({ language: 'en', dateFormat: 'yyyy-mm-dd' });
+    $('.airdatepicker').datepicker({ language: 'fr', dateFormat: 'yyyy-mm-dd', autoClose: true });
+
 
     $('.ui.dropdown.getid').dropdown({ onChange: function(value, text, $selectedItem) {
         $('select[name="employee"] option').each(function() {
@@ -124,6 +128,7 @@
 
                     // initialize datatable
                     $('#dataTables-example').DataTable({responsive: true,pageLength: 15,lengthChange: false,searching: false,ordering: true});
+                    
                 }
             }
         })

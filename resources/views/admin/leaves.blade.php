@@ -32,7 +32,7 @@
                                 @foreach ($leaves as $data)
                                 <tr>
                                     <td>{{ $data->employee }}</td>
-                                    <td>{{ $data->leavetype }}</td>
+                                    <td>{{ $data->type }}</td>
                                     <td>@php echo e(date('d-m-Y', strtotime($data->leavefrom))) @endphp</td>
                                     <td>@php echo e(date('d-m-Y', strtotime($data->leaveto))) @endphp</td>
                                     <td>@php echo e(date('d-m-Y', strtotime($data->returndate))) @endphp</td>

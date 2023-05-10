@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
     @section('meta')
-        <title>Reports | Workday Time Clock</title>
+        <title>Rapports | KKS-POINTAGES</title>
         <meta name="description" content="Workday reports, view reports, and export or download reports.">
     @endsection
 
@@ -9,8 +9,8 @@
     
     <div class="container-fluid">
         <div class="row">
-            <h2 class="page-title">{{ __("Employee Schedule Report") }}
-                <a href="{{ url('reports') }}" class="ui basic blue button mini offsettop5 float-right"><i class="ui icon chevron left"></i>{{ __("Return") }}</a>
+            <h2 class="page-title">{{ __("RAPPORT D'HORAIRE DE TRAVAIL DES EMPLOYÉS") }}
+                <a href="{{ url('reports') }}" class="ui basic blue button mini offsettop5 float-right"><i class="ui icon chevron left"></i>{{ __("Retour") }}</a>
             </h2>
         </div>
 
@@ -19,10 +19,10 @@
                 <div class="box-body reportstable">
                     <form action="{{ url('export/report/schedule') }}" method="post" accept-charset="utf-8" class="ui small form form-filter" id="filterform">
                         @csrf
-                        <div class="inline three fields">
+                        <div class="inline three fields" >
                             <div class="three wide field">
                                 <select name="employee" class="ui search dropdown getid">
-                                    <option value="">{{ __("Employee") }}</option>
+                                    <option value="">{{ __("Employé") }}</option>
                                     @isset($employee)
                                         @foreach($employee as $e)
                                             <option value="{{ $e->lastname }}, {{ $e->firstname }}" data-id="{{ $e->idno }}">{{ $e->lastname }}, {{ $e->firstname }}</option>
@@ -33,21 +33,21 @@
 
                             <input type="hidden" name="emp_id" value="">
                             <button id="btnfilter" class="ui icon button positive small inline-button"><i class="ui icon filter alternate"></i> {{ __("Filter") }}</button>
-                            <button type="submit" name="submit" class="ui icon button blue small inline-button"><i class="ui icon download"></i> {{ __("Download") }}</button>
+                            <button type="submit" name="submit" class="ui icon button blue small inline-button"><i class="ui icon download"></i> {{ __("Télécharger") }}</button>
                         </div>
                     </form>
 
                     <table width="100%" class="table table-striped table-hover" id="dataTables-example" data-order='[[ 0, "asc" ]]'>
                         <thead>
                             <tr>
-                                <th>{{ __("Employee Name") }}</th>
-                                <th>{{ __("Start Time") }}</th>
-                                <th>{{ __("Off Time") }}</th>
-                                <th>{{ __("Start Date") }} </th>
-                                <th>{{ __("End Date") }}</th>
-                                <th>{{ __("Hours") }}</th>
-                                <th>{{ __("Rest Days") }}</th>
-                                <th>{{ __("Status") }}</th>
+                                <th>{{ __("Nom Employé") }}</th>
+                                <th>{{ __("Heure Début ") }}</th>
+                                <th>{{ __("Heure Fin") }}</th>
+                                <th>{{ __("Du") }} </th>
+                                <th>{{ __("Au") }}</th>
+                                <th>{{ __("Durée") }}</th>
+                                <th>{{ __("Jours de repos") }}</th>
+                                <th>{{ __("Statut") }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,12 +79,12 @@
                                     </td>
                                     <td>
                                         @php 
-                                            echo e(date("l, F j, Y", strtotime($v->datefrom)));
+                                            echo e(date("d-m-Y", strtotime($v->datefrom)));
                                         @endphp 
                                     </td>
                                     <td>
                                         @php 
-                                            echo e(date("l, F j, Y", strtotime($v->dateto)));
+                                            echo e(date("d-m-Y", strtotime($v->dateto)));
                                         @endphp 
                                     </td>
                                     </td>
@@ -92,9 +92,9 @@
                                     <td>{{ $v->restday }}</td>
                                     <td>
                                         @if($v->archive == '0') 
-                                            <span class="green">Present Schedule</span>
+                                            <span class="green">En cours</span>
                                         @else
-                                            <span class="teal">Past Schedule</span>
+                                            <span class="teal">Terminé</span>
                                         @endif
                                     </td>
                                 </tr>
@@ -150,10 +150,10 @@
                             date = new Date(format_date);
                             year = date.getFullYear();
                             month = date.getMonth();
-                            months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+                            months = new Array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
                             d = date.getDate();
                             day = date.getDay();
-                            days = new Array('Sunday,', 'Monday,', 'Tuesday,', 'Wednesday,', 'Thursday,', 'Friday,', 'Saturday,');
+                            days = new Array('Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi');
                             
                             n_date = days[day]+' '+months[month]+' '+d+', '+year;
                             return n_date; 
@@ -162,9 +162,9 @@
                         var a = employee[i].archive;
                         function s(a) {
                             if (a == '0') {
-                                return '<span class="green">Present Schedule</span>';
+                                return '<span class="green">En cours</span>';
                             } else {
-                                return '<span class="teal">Past Schedule</span>';
+                                return '<span class="teal">Terminé</span>';
                             }
                         }
 

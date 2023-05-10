@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-12">
             
-            <h2 class="page-title"><i class="ui icon dashboard"></i><span style="color:brown;">Admin |</span>{{ __(' TABLEAU DE BORD') }} </h2>
+            <h2 class="page-title"><i class="ui icon dashboard"></i><span style="color: brown;">@isset(Auth::user()->name){{ Auth::user()->name }}@endisset |</span> {{ __(' TABLEAU DE BORD') }} </h2>
             </div><br>    
         </div>
         <div class="row">

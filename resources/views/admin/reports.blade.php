@@ -48,7 +48,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><a href="{{ url('reports/employee-leaves') }}"><i class="ui icon calendar plus"></i> {{ __('Rapport de congés des employés') }}</a></td>
+                            <td><a href="{{ url('reports/employee-leaves') }}"><i class="ui icon calendar plus"></i> {{ __('Rapport des demandes de permission des employés') }}</a></td>
                             <td class="odd">
                                 @isset($lastviews)
                                     @foreach ($lastviews as $views)
@@ -65,18 +65,6 @@
                                 @isset($lastviews)
                                     @foreach ($lastviews as $views)
                                         @if($views->report_id == 4)
-                                            {{ $views->last_viewed }}
-                                        @endif
-                                    @endforeach
-                                @endisset
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="{{ url('reports/organization-profile') }}"><i class="ui icon chart pie"></i> {{ __("Statistique Graphique") }}</a></td>
-                            <td class="odd">
-                                @isset($lastviews)
-                                    @foreach ($lastviews as $views)
-                                        @if($views->report_id == 5)
                                             {{ $views->last_viewed }}
                                         @endif
                                     @endforeach

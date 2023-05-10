@@ -37,6 +37,9 @@
             </div>
 
             <ul class="list-unstyled components" >
+
+                @if (in_array('1',Auth::user()->permissions()))
+                 
                 <li class="">
                     <a href="{{ url('dashboard') }}">
                         <i class="ui icon dashboard"></i>
@@ -44,25 +47,32 @@
                         <hr>
                     </a>
                 </li>
-
+                @endif
+                @if (in_array('2', Auth::user()->permissions()) || in_array('21', Auth::user()->permissions()) || in_array('22', Auth::user()->permissions()) || in_array('23', Auth::user()->permissions()) || in_array('24', Auth::user()->permissions()) || in_array('25', Auth::user()->permissions()))
                 <li class="">
                     <a href="{{ url('employees') }}">
                         <i class="ui icon users"></i>
                         <p>{{ __('Employés') }}</p>
                     </a>
                 </li>
+                @endif                
+                @if (in_array('11', Auth::user()->permissions()) || in_array('111', Auth::user()->permissions()) || in_array('112', Auth::user()->permissions()))
                 <li class="">
                     <a href="{{ url('fields/company') }}">
                         <i class="ui icon university"></i>
                         <p>{{ __('Entreprise') }}</p>
                     </a>
                 </li>
+                @endif 
+                @if (in_array('12', Auth::user()->permissions()) || in_array('121', Auth::user()->permissions()) || in_array('122', Auth::user()->permissions()))
                 <li class="">
                     <a href="{{ url('fields/department') }}">
                         <i class="ui icon cubes"></i>
                         <p>{{ __('Department') }}</p>
                     </a>
                 </li>
+                @endif
+                @if (in_array('13', Auth::user()->permissions()) || in_array('131', Auth::user()->permissions()) || in_array('132', Auth::user()->permissions()))
                 <li class="">
                     <a href="{{ url('fields/jobtitle') }}">
                         <i class="ui icon pencil alternate"></i>
@@ -70,14 +80,16 @@
                         <hr>
                     </a>
                 </li>
-                    
+                @endif
+                @if (in_array('3', Auth::user()->permissions()) || in_array('31', Auth::user()->permissions()) || in_array('32', Auth::user()->permissions()))
                 <li class="">
                     <a href="{{ url('attendance') }}">
                         <i class="ui icon clock outline"></i>
                         <p>{{ __('Pointages') }}</p>
                     </a>
                 </li>
-
+                @endif
+                @if (in_array('4', Auth::user()->permissions()) || in_array('41', Auth::user()->permissions()) || in_array('42', Auth::user()->permissions()) || in_array('43', Auth::user()->permissions()) || in_array('44', Auth::user()->permissions()))
                 <li class="">
                     <a href="{{ url('schedules') }}">
                         <i class="ui icon calendar alternate outline"></i>
@@ -85,32 +97,40 @@
                         <hr>
                     </a>
                 </li>
-                
+                @endif
+                @if (in_array('5', Auth::user()->permissions()) || in_array('51', Auth::user()->permissions()) || in_array('52', Auth::user()->permissions()) || in_array('53', Auth::user()->permissions()))
                 <li class="">
                     <a href="{{ url('leaves') }}">
-                        <i class="ui icon calendar plus outline"></i>
-                        <p>{{ __('Congés') }}</p>
+                        <i class="ui icon calendar plus outline"></i>   
+                        <p>{{ __('Demandes') }}</p>
                     </a>
                 </li><hr>
-                <li>
+                @endif
+                @if (in_array('8', Auth::user()->permissions()) || in_array('81', Auth::user()->permissions()) || in_array('82', Auth::user()->permissions()) || in_array('83', Auth::user()->permissions()))
+                <li class="">
                     <a href="{{ url('users') }}">
                         <i class="ui icon user circle outline"></i>
                         <p>{{ __('Utilisateurs') }}</p>
                         <hr>
                     </a>
                 </li>
+                @endif
+                @if (in_array('7', Auth::user()->permissions())) 
                 <li class="">
                     <a href="{{ url('reports') }}">
                         <i class="ui icon chart bar outline"></i>
                         <p>{{ __('Rapports') }}</p>
                     </a>
                 </li>
+                @endif
+                @if (in_array('9', Auth::user()->permissions()) || in_array('91', Auth::user()->permissions())) 
                 <li>
                     <a href="{{ url('settings') }}">
                         <i class="ui icon cog"></i>
                         <p>{{ __('Reglages') }}</p>
                     </a>
                 </li>
+                @endif
             </ul>
         </nav>
 

@@ -12,6 +12,7 @@ class PersonalDashboardController extends Controller
 {
     public function index() 
     {
+     
         $id = \Auth::user()->reference;
         $sm = date('Y/m/01');
         $em = date('Y/m/31');
@@ -37,6 +38,9 @@ class PersonalDashboardController extends Controller
         $it = table::attendance()->where([['reference', $id], ['status_timein', 'In Time']])->whereBetween('date', [$sm, $em])->count();
         $ed = table::attendance()->where([['reference', $id], ['status_timeout', 'On time']])->whereBetween('date', [$sm, $em])->count();
 
+/*         $id = auth()->user()->role_id;
+        $d = table::permissions()->where('role_id', $id)->pluck('perm_id')->toArray();
+ */           
         return view('personal.personal-dashboard', compact('cs', 'ps', 'al', 'pl', 'ald', 'a', 'la', 'it', 'tf'));
     }
 }
