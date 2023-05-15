@@ -19,7 +19,6 @@
     <div class="container-fluid">
         <div class="row">
             <h2 class="page-title">{{ __('Liste des Présences') }}
-                <!--a href="{{ url('clock') }}" target="_blank" class="ui positive button mini offsettop5 float-right"><i class="ui icon clock"></i>{{ __('View web clock') }}</a-->
                 <button class="ui primary button mini offsettop5 btn-add float-right"><i class="ui icon plus circle"></i>{{ __("Pointage Manuel") }}</button>
             </h2>
         </div>  

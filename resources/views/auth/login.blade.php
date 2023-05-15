@@ -36,10 +36,10 @@
 						<form class="form-auth-small ui form" action="{{ route('login') }}" method="POST">
 							
                        		@csrf
-							<div class="fields">
+							   <div class="fields">
 								<div class="sixteen wide field {{ $errors->has('email') ? ' has-error' : '' }}">
 									<label for="email" class="color-white">{{ __('Email') }}</label>
-									<input id="email" type="email" class="" name="email" value="{{ old('email') }}" placeholder="{{ __('Entrez votre adresse email') }}" required autofocus>
+									<input id="email" type="email" class="" name="email" value="{{ old('email') }}" placeholder="{{ __('Enter your e-mail address') }}" required autofocus>
 									@if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -47,11 +47,10 @@
                                 	@endif	
 								</div>
 							</div>
-
 							<div class="fields">
 								<div class="sixteen wide field {{ $errors->has('password') ? ' has-error' : '' }}">
-									<label for="password" class="color-white">{{ __('Mot de passe') }}</label>
-                                	<input id="password" type="password" class="" name="password" placeholder="{{ __('Taper votre mot de passe') }}" required>
+									<label for="password" class="color-white">{{ __('Password') }}</label>
+                                	<input id="password" type="password" class="" name="password" placeholder="{{ __('Enter your password') }}" required>
                                 	@if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>

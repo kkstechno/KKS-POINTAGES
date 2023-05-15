@@ -96,7 +96,7 @@
                                     <i class="ui icon linkify"></i> <span class="navmenutext uppercase">{{ __("Accès Rapide") }}</span>
                                     <i class="dropdown icon"></i>
                                     <div class="menu" tabindex="-1">
-                                      <a href="{{ url('clock') }}" class="item"><i class="ui icon clock outline"></i> {{ __("Pointage") }}</a>
+                                      <a href="{{ url('clock') }}" target="_blank" class="item"><i class="ui icon clock outline"></i> {{ __("Pointage") }}</a>
                                       <div class="divider"></div>
                                       <a href="{{ url('personal/profile/view') }}" class="item"><i class="ui icon user outline"></i> {{ __("Mon Profil") }}</a>
                                     </div>

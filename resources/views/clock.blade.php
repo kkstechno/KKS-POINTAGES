@@ -34,10 +34,6 @@
                             <button class="btnclock timeout" disabled>{{ __("Heure Départ") }}</button>
                         @endif   
 
-
-
-{{--                     <button class="btnclock timein active" data-type="timein">{{ __("Arrivée") }}</button>
-                    <button class="btnclock timeout" data-type="timeout">{{ __("Départ") }}</button> --}}
                 </div>
             </div>
             <div class="clockwrapper">
@@ -54,7 +50,7 @@
                         @isset($cc)
                             @if($cc == "on") 
                             <div class="inline field comment">
-                                <textarea name="comment" class="underpercase lightblue" rows="5" placeholder="Veuillez préciser les raisons de votre retard." value=""></textarea>
+                                <textarea name="comment" class="underpercase lightblue" rows="5" placeholder="Veuillez apporter une justification." value=""></textarea>
                             </div>                            
                             @endif
                         @endisset

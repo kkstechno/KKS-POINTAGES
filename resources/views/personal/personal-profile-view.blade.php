@@ -84,28 +84,6 @@
                                     <td>@isset($company_data->jobposition) {{ $company_data->jobposition }} @endisset</td>
                                 </tr>
                                 <tr>
-                                    <td>{{ __("Type de congé") }}</td>
-                                    <td>
-                                        @isset($leavetype)
-                                            @isset($leavegroup) 
-                                                @isset($company_data->leaveprivilege)
-                                                    @foreach($leavegroup as $lg)
-                                                        @if($lg->id == $company_data->leaveprivilege)
-                                                            @php
-                                                                $lp = explode(",", $lg->leaveprivileges);
-                                                            @endphp
-                                                            @foreach($lp as $rights) 
-                                                                @foreach($leavetype as $lt)
-                                                                    @if($lt->id == $rights) {{ $lt->leavetype }}, @endif
-                                                                @endforeach
-                                                            @endforeach
-                                                        @endif
-                                                    @endforeach
-                                                @endisset
-                                            @endisset
-                                        @endisset
-                                    </td>
-                                </tr>
                                 <tr>
                                     <td><p>{{ __("Type d'Emploi") }}</p></td>
                                     <td><p>@isset($profile->employmenttype) {{ $profile->employmenttype }} @endisset</p></td>
@@ -129,8 +107,16 @@
                                 </tr>
                                 <tr>
                                     <td><p>{{ __("Statut du Compte") }}</p></td>
-                                    <td><p>@isset($profile->employmentstatus) {{ $profile->employmentstatus }} @endisset</p></td>
-                                </tr>
+                                    <td>
+                                        @if($profile->employmentstatus != '') 
+                                        @if($profile->employmentstatus == 'Activé')
+                                            <span class="green">{{ __("Activé") }}</span> 
+                                        @else
+                                            <span class="red">{{ __("Désactivé") }}</span> 
+                                        @endif
+                                    @endif
+                                    </td>
+                                </tr> 
                             </tbody>
                         </table>
                     </div>

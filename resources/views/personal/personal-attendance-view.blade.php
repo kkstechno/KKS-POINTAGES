@@ -130,13 +130,13 @@
     
     @section('scripts')
     <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/datepicker.min.js') }}"></script>
-    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.en.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.fr.js') }}"></script>
     <script src="{{ asset('/assets/vendor/momentjs/moment.min.js') }}"></script>
     <script src="{{ asset('/assets/vendor/momentjs/moment-timezone-with-data.js') }}"></script>
 
     <script type="text/javascript">
-    $('#dataTables-example').DataTable({responsive: true,pageLength: 15,lengthChange: false,searching: false,ordering: true});
-    $('.airdatepicker').datepicker({ language: 'en', dateFormat: 'dd-mm-yyyy' });
+/*     $('#dataTables-example').DataTable({responsive: true,pageLength: 15,lengthChange: false,searching: false,ordering: true});
+ */    $('.airdatepicker').datepicker({ language: 'fr', dateFormat: 'yyyy-mm-dd', autoClose: true });
     $('#filterform').submit(function(event) {
         event.preventDefault();
         var date_from = $('#datefrom').val();
@@ -236,7 +236,9 @@
                     }
 
                     // initialize datatable
-                    $('#dataTables-example').DataTable({responsive: true,pageLength: 15,lengthChange: false,searching: false,ordering: true});
+                    $('#dataTables-example').DataTable({responsive: true,pageLength: 15,lengthChange: false,searching: false,ordering: true, language: {
+                        url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json"
+                    }});
                 }            
             }
         })

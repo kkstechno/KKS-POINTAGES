@@ -197,10 +197,11 @@
 
     @section('scripts')
     <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/datepicker.min.js') }}"></script>
-    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.en.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/air-datepicker/dist/js/i18n/datepicker.fr.js') }}"></script>
     <script type="text/javascript">
 
-   $('.airdatepicker').datepicker({ language: 'en', dateFormat: 'dd-mm-yyyy', autoClose: true });
+
+   $('.airdatepicker').datepicker({ language: 'fr', dateFormat: 'yyyy-mm-dd', autoClose: true });
 
     
     $('.ui.dropdown.department').dropdown({ onChange: function(value, text, $selectedItem) {
