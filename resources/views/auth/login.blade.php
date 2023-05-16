@@ -22,7 +22,7 @@
 
 <body>
 	<div id="wrapper">				
-		<div class="vertical-align-wrap" style="background:url(assets/images/img/bg01.jpg); background-size:cover; background-position:center;background-repeat: no-repeat;"">
+		<div class="vertical-align-wrap" style="background:url(assets/images/img/fond01.jpg); background-size:cover; background-position:center;background-repeat: no-repeat;"">
 
 			<div class="vertical-align-middle">
 				<div class="auth-box">	
@@ -34,33 +34,37 @@
 						<div class="logo align-center"><img src="{{ asset('/assets/images/img/pp.svg') }}" alt="kks-pointages"></div>
 
 						<form class="form-auth-small ui form" action="{{ route('login') }}" method="POST">
-							
-                       		@csrf
-							   <div class="fields">
-								<div class="sixteen wide field {{ $errors->has('email') ? ' has-error' : '' }}">
+							@csrf
+							<div class="fields">
+								<div class="sixteen wide field">
 									<label for="email" class="color-white">{{ __('Email') }}</label>
-									<input id="email" type="email" class="" name="email" value="{{ old('email') }}" placeholder="{{ __('Enter your e-mail address') }}" required autofocus>
-									@if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                	@endif	
+									<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ __('Enter your e-mail address') }}" required autofocus>
 								</div>
 							</div>
 							<div class="fields">
-								<div class="sixteen wide field {{ $errors->has('password') ? ' has-error' : '' }}">
+								<div class="sixteen wide field">
 									<label for="password" class="color-white">{{ __('Password') }}</label>
-                                	<input id="password" type="password" class="" name="password" placeholder="{{ __('Enter your password') }}" required>
-                                	@if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                	@endif
+									<input id="password" type="password" class="{{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" placeholder="{{ __('Enter your password') }}" required>
+									
+									@error('email')
+										<li class="invalid-feedback" role="alert" style="color:red;">
+											<strong>{{ $message }}</strong>
+										</li>
+									@enderror
+									@if ($errors->has('password'))
+										<li class="invalid-feedback" role="alert" style="color:red;">
+											<strong>{{ $errors->first('password') }}</strong>
+										</li>
+									@endif
 								</div>
+								
 							</div>
-<br><br>
+							<br><br>
 							<button type="submit" class="ui primary button large fluid">{{ __('Se Connecter') }}</button>
 						</form>
+						
+						
+						
 					</div>
 				</div>
 			</div>

@@ -21,7 +21,7 @@
     </head>
     <body>
 
-    <img src="{{ asset('/assets/images/img/bg04.jpg') }}" class="wave">
+    <img src="{{ asset('/assets/images/img/fond05.jpg') }}" class="wave">
     <div class="wrapper">
         <div id="body">
             <div class="content">

@@ -1,74 +1,54 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\ValidationException;
+
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    // protected $redirectTo = '/home';
-    protected function authenticated(Request $request) 
+    protected $redirectTo = '/dashboard';
+    protected $redirectAfterLogout = '/login';
+
+    protected function authenticated(Request $request, $user)
     {
-        $type = \Auth::user()->acc_type;
-        if ($type == 1) 
-        {
+        $type = $user->acc_type;
+        if ($type == 1) {
             return redirect('personal/dashboard');
-        } 
-        if($type == 2) 
-        {
+        } elseif ($type == 2) {
             return redirect('dashboard');
-        } 
-        if($type == null || $type == 0) {
+        } else {
             return redirect('login');
         }
     }
 
-    /**
-     * Include status as credential.
-     *
-    */
-    protected function credentials(\Illuminate\Http\Request $request) 
+    protected function sendFailedLoginResponse(Request $request)
     {
-         return ['email' => $request->{$this->username()}, 'password' => $request->password, 'status' => 1];
+        throw ValidationException::withMessages([
+            $this->username() => [trans('Ces identifiants ne correspondent pas à nos enregistrements.')],
+            'password' => [trans('Le mot de passe fourni est incorrect.')],
+        ])->redirectTo($this->loginPath());
     }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function logout(Request $request)
     {
-        $this->middleware('guest')->except('logout');
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect($this->redirectAfterLogout);
     }
 
-    /**
-     * Auth logout user.
-     *
-     */
-    public function logout() 
+    protected function loginPath()
     {
-        Auth::logout();
-        return redirect('login'); 
+        return '/login'; // Remplacez '/login' par le chemin de votre page de connexion
     }
 }
