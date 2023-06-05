@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\personal;
 use DB;
 use App\Classes\table;
@@ -18,7 +19,7 @@ class PersonalLeavesController extends Controller
         $l = table::leaves()->where('idno', $i)->get();
         $lp = table::companydata()->where('reference', $ref)->value('leaveprivilege');
         $r = table::leavegroup()->where('id', $lp)->value('leaveprivileges');
-        $rights = explode(" ", $r);
+        $rights = explode(",", $r);
         
         $lt = table::leavetypes()->get();
         $lg = table::leavegroup()->get();
@@ -30,18 +31,18 @@ class PersonalLeavesController extends Controller
     {
 
         $v = $request->validate([
-            'type' => 'max:100',
+            'type' => 'required|max:100',
             'typeid' => 'digits_between:0,999|max:100',
-            //'leavefrom' => 'required|date|max:15',
+            'leavefrom' => 'required|date|max:15',
             'leaveto' => 'required|date|max:15',
             'returndate' => 'required|date|max:15',
             'reason' => 'required|max:255',
         ]);
 
-        $typeid = $request->typeid;
+       // $typeid = $request->typeid;
         $type = mb_strtoupper($request->type);
         $reason = mb_strtoupper($request->reason);
-        $leavefrom = date("Y-m-d");
+        $leavefrom = date("Y-m-d", strtotime($request->leavefrom));
         $leaveto = date("Y-m-d", strtotime($request->leaveto));
         $returndate = date("Y-m-d", strtotime($request->returndate));
 
@@ -52,9 +53,9 @@ class PersonalLeavesController extends Controller
         table::leaves()->insert([
             'reference' => $id,
             'idno' => $idno,
-            'employee' => $q->firstname.' '.$q->lastname,
+            'employee' => $q->lastname.', '.$q->firstname,
             'type' => $type,
-            'typeid' => $typeid,
+            //'typeid' => $typeid,
             'leavefrom' => $leavefrom,
             'leaveto' => $leaveto,
             'returndate' => $returndate,
@@ -62,7 +63,7 @@ class PersonalLeavesController extends Controller
             'status' => 'En attente',
         ]);
 
-        return redirect('personal/leaves/view')->with('success', trans("Votre Demande a été envoyée!"));
+        return redirect('personal/leaves/view')->with('success', trans("Votre demande a été envoyé !"));
     }
 
     public function getPL(Request $request) 
@@ -92,9 +93,9 @@ class PersonalLeavesController extends Controller
     {
         $id = $request->id;
         $view = table::leaves()->where('id', $id)->first();
-        $view->leavefrom = date('d/m/Y', strtotime($view->leavefrom));
-        $view->leaveto = date('d/m/Y', strtotime($view->leaveto));
-        $view->returndate = date('d/m/Y', strtotime($view->returndate));
+        $view->leavefrom = date('M d, Y', strtotime($view->leavefrom));
+        $view->leaveto = date('M d, Y', strtotime($view->leaveto));
+        $view->returndate = date('M d, Y', strtotime($view->returndate));
 
         return response()->json($view);
     }
@@ -114,7 +115,7 @@ class PersonalLeavesController extends Controller
         $v = $request->validate([
             'id' => 'required|max:200',
             'type' => 'required|max:100',
-           // 'leavefrom' => 'required|date|max:15',
+            'leavefrom' => 'required|date|max:15',
             'leaveto' => 'required|date|max:15',
             'returndate' => 'required|date|max:15',
             'reason' => 'required|max:255',
@@ -136,7 +137,7 @@ class PersonalLeavesController extends Controller
                     'reason' => $reason
                 ]);
 
-        return redirect('personal/leaves/view')->with('success', trans("La demande a été modifiée!"));
+        return redirect('personal/leaves/view')->with('success', trans("Votre demande a été mise à jour !"));
     }
 
     public function delete($id, Request $request)
@@ -144,7 +145,7 @@ class PersonalLeavesController extends Controller
         
         table::leaves()->where('id', $id)->delete();
 
-        return redirect('personal/leaves/view')->with('success', trans("La demande a été supprimée!"));
+        return redirect('personal/leaves/view')->with('success', trans("Votre demande a été supprimée !"));
     }
 
 }
