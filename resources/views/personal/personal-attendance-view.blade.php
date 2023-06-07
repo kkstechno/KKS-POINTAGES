@@ -99,21 +99,23 @@
                                     @endisset                                 
                                     </td>
                                     <td>
+
                                         @if($v->status_timein != '') 
-                                        @if($v->status_timein == 'Late In')
-                                            <span class="red">{{ __("Retard") }}</span> | 
-                                        @else
-                                            <span class="green">{{ __("A l'heure") }}</span> | 
+                                            @if($v->status_timein == 'Late In')
+                                                <span class="red">{{ __("Retard") }}</span> | 
+                                            @else
+                                                <span class="green">{{ __("A l'heure") }}</span> | 
+                                            @endif
                                         @endif
-                                    @endif
-                                    
-                                    @if($v->status_timeout != '') 
-                                        @if($v->status_timeout == 'Horaire respecté')
-                                            <span class="blue">{{ __("Horaire respecté") }}</span> 
-                                        @else
-                                            <span class="orange">{{ __("Départ anticipé") }}</span> 
+                                        
+                                        @if($v->status_timeout != '') 
+                                            @if($v->status_timeout == 'On Time')
+                                                <span class="blue">{{ __("Horaire respecté") }}</span> 
+                                            @else
+                                                <span class="orange">{{ __("Départ anticipé") }}</span> 
+                                            @endif
                                         @endif
-                                    @endif
+                                        
                                     </td>
                                 </tr>
                             @endforeach

@@ -111,8 +111,8 @@
                                     @endisset
                                 
                                 </td>
-
                                 <td>
+
                                     @if($d->status_timein != '') 
                                         @if($d->status_timein == 'Late In')
                                             <span class="red">{{ __("Retard") }}</span> | 
@@ -122,13 +122,14 @@
                                     @endif
                                     
                                     @if($d->status_timeout != '') 
-                                        @if($d->status_timeout == 'Horaire respecté')
+                                        @if($d->status_timeout == 'On Time')
                                             <span class="blue">{{ __("Horaire respecté") }}</span> 
                                         @else
                                             <span class="orange">{{ __("Départ anticipé") }}</span> 
                                         @endif
                                     @endif
-                                </td>                 
+                                    
+                                </td>                
                                 @isset($ss)
                                     @if($ss->clock_comment == "on")
                                         <td>{{ $d->comment }}</td>

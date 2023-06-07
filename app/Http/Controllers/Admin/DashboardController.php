@@ -14,10 +14,12 @@ class DashboardController extends Controller
     public function index(Request $request) 
     {
        // dd(auth()->user()->permissions());
+      // $id = \Auth::user()->reference;
+
         
         if (permission::permitted('dashboard')=='fail'){ return redirect()->route('denied'); }
         
-        $datenow = date('Y/m/d'); 
+        $datenow = date('Y/m/d');
         $is_online = table::attendance()->where('date', $datenow)->pluck('idno');
         $is_online_arr = json_decode(json_encode($is_online), true);
         $is_online_now = count($is_online); 
@@ -49,15 +51,19 @@ class DashboardController extends Controller
         ->where('employmentstatus', 'Activé')
         ->count();
 
-        $emp_R = table::attendance()
+      /*   $emp_R = table::attendance()
         ->where('date', $datenow)
         ->where('status_timein', 'Late In')
-        ->count();
+        ->count(); */
 
-        $emp_A = table::attendance()
+        $emp_R = table::attendance()->where([['status_timein', 'Late In']])->where('date', $datenow)->count();
+        $emp_A = table::attendance()->where([['status_timein', 'In Time']])->where('date', $datenow)->count();
+
+
+/*         $emp_A = table::attendance()
         ->where('date', $datenow)
         ->where('status_timein', 'On Time')
-        ->count();
+        ->count(); */
 
 
 		$emp_typeT = table::people()

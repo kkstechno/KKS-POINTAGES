@@ -206,7 +206,7 @@
                                     @endif
                                     
                                     @if($v->status_timeout != '') 
-                                        @if($v->status_timeout == 'Horaire respecté')
+                                        @if($v->status_timeout == 'Time On')
                                             <span class="blue">{{ __("Horaire respecté") }}</span> 
                                         @else
                                             <span class="orange">{{ __("Départ anticipé") }}</span> 
