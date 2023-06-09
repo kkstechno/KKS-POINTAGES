@@ -9,6 +9,9 @@
 
         $startPM = \Carbon\Carbon::today()->setHour(12); // Définit l'heure Après-midi de début à 12h
         $endPM =\Carbon\Carbon::today()->setHour(20)->setMinute(00); // Définit Après-midi de fin à 20h
+
+        $currentTime = date('H:i');
+
     @endphp 
 
 
@@ -48,21 +51,22 @@
                 <div class="userinput">
                     <form action="" method="get" accept-charset="utf-8" class="ui form">
                         @isset($cc)
-                            @if($cc == "on") 
+                            @if($cc == "on" && $currentTime >= "08:31" && $currentTime <= "17:30") 
                             <div class="inline field comment">
-                                <textarea name="comment" class="underpercase lightblue" rows="5" placeholder="Veuillez apporter une justification." value=""></textarea>
+                                <textarea name="comment" class="uppercase lightblue" rows="5" placeholder="Veuillez apporter une justification."></textarea>
                             </div>                            
                             @endif
                         @endisset
                         <div class="inline field">
-                            <input @if($rfid == 'on') id="rfid" @endif class="enter_idno uppercase @if($rfid == 'on') mr-0 @endif" name="idno" value="{{Auth::user()->idno}}" style="color:red;" type="text" placeholder="{{ __("Saisir votre ID") }}" required autofocus>
-
+                            <input @if($rfid == 'on') id="rfid" @endif class="enter_idno uppercase @if($rfid == 'on') mr-0 @endif" name="idno" value="{{Auth::user()->idno}}" style="color:red;" type="text" placeholder="{{ __("Saisir votre ID") }}" required autofocus readonly>
+                    
                             @if($rfid !== "on")
                                 <button id="btnclockin" type="button" class="ui positive large icon button">{{ __("Pointer") }}</button>
                             @endif
                             <input type="hidden" id="_url" value="{{url('/')}}">
                         </div>
                     </form>
+                    
                 </div>
             </div>
 

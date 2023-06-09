@@ -1,22 +1,5 @@
 <?php
-/*
-* Workday - A time clock application for employees
-* Email: official.codefactor@gmail.com
-* Version: 1.1
-* Author: Brian Luna
-* Copyright 2020 Codefactor
-*/
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 

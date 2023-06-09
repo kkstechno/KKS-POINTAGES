@@ -1,11 +1,5 @@
 <?php
-/*
-* Workday - A time clock application for employees
-* Email: official.codefactor@gmail.com
-* Version: 1.1
-* Author: Brian Luna
-* Copyright 2020 Codefactor
-*/
+
 namespace App\Http\Controllers;
 use DB;
 use Carbon\Carbon;
@@ -52,21 +46,23 @@ class ClockController extends Controller
         $time = date('h:i:s A');
         $comment = strtoupper($request->clockin_comment);
         $ip = $request->ip();
-
+        
         // clock-in comment feature
         $clock_comment = table::settings()->value('clock_comment');
         $tf = table::settings()->value('time_format');
-        $time_val = ($tf == 1) ? $time : date("H:i:s", strtotime($time)) ;
-
-        if ($clock_comment == "on") 
+        $time_val = ($tf == 1) ? $time : date("H:i:s", strtotime($time));
+        $currentTime = date('H:i');
+        
+        if ($clock_comment == "on"  && $currentTime >= "08:31" && $currentTime <= "17:29") 
         {
-            if ($comment == NULL) 
+            if ($comment == NULL)
             {
                 return response()->json([
                     "error" => trans("Veuillez entrer une justification")
                 ]);
             }
         }
+        
 
         // ip resriction
         $iprestriction = table::settings()->value('iprestriction');
@@ -95,7 +91,7 @@ class ClockController extends Controller
         $lastname = $emp->lastname;
         $firstname = $emp->firstname;
         $mi = $emp->mi;
-        $employee = mb_strtoupper($lastname.', '.$firstname.' '.$mi);
+        $employee = mb_strtoupper($lastname.' '.$firstname);
 
         if ($type == 'timein') 
         {
