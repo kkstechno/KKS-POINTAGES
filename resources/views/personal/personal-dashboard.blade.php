@@ -128,7 +128,7 @@
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{ __("Pointages récents") }}</h3>
+                    <h3 class="box-title">{{ __("Point récents") }}</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                     </div>
@@ -214,6 +214,13 @@
                                     @endif
                                     
                                 </td>
+                                <td>
+                                    <td>
+                                        @if($v->timein == NULL || $v->timeout == NULL )
+                                       <a href="#" class="ui circular basic icon button tiny"><i class="ui icon edit"></i></a>
+                                        @endif 
+                                    </td>
+                                </td>
                                 
                             </tr>
                         @endforeach
@@ -224,7 +231,7 @@
             </div>
         </div>
 
-        <div class="col-sm-12 col-md-6 col-lg-4">
+ <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ __("Horaires précédents") }}</h3>
@@ -272,7 +279,7 @@
                 </table>
                 </div>
             </div>
-        </div>
+        </div> 
         
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="box box-success">

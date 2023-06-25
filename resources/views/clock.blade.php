@@ -27,14 +27,14 @@
                         @if ($now->between($startAM, $endAM))
                             <button class="btnclock timein active" data-type="timein">{{ __("Heure Arrivée") }}</button>
                         @else
-                            <button class="btnclock timein" disabled>{{ __("Heure Arrivée") }}</button>
+                            <button class="btnclock timein" data-type="timein">{{ __("Heure Arrivée") }}</button>
                         @endif
 
 
                         @if ($now->between($startPM, $endPM))
                             <button class="btnclock timeout active" data-type="timeout">{{ __("Heure Départ") }}</button>
                         @else
-                            <button class="btnclock timeout" disabled>{{ __("Heure Départ") }}</button>
+                            <button class="btnclock timeout" data-type="timeout">{{ __("Heure Départ") }}</button>
                         @endif   
 
                 </div>

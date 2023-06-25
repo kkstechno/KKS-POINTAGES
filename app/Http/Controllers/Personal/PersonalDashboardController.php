@@ -5,6 +5,7 @@ use DB;
 use App\Classes\table;
 use App\Classes\permission;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -38,10 +39,22 @@ class PersonalDashboardController extends Controller
         $it = table::attendance()->where([['reference', $id], ['status_timein', 'In Time']])->whereBetween('date', [$sm, $em])->count();
         $ed = table::attendance()->where([['reference', $id], ['status_timeout', 'On time']])->whereBetween('date', [$sm, $em])->count();
 
+    //    dd('bonjour');
+
 /*         $id = auth()->user()->role_id;
         $d = table::permissions()->where('role_id', $id)->pluck('perm_id')->toArray();
  */           
         return view('personal.personal-dashboard', compact('cs', 'ps', 'al', 'pl', 'ald', 'a', 'la', 'it', 'tf'));
     }
+/*     public function edit($id, Request $request)
+    {
+        if (permission::permitted('attendance-edit')=='fail'){ return redirect()->route('denied'); }
+        
+        $a = table::attendance()->where('id', $id)->first();
+        $e_id = ($a->id == null) ? 0 : Crypt::encryptString($a->id) ;
+        $tf = table::settings()->value("time_format");
+
+        return view('personal.edits.personal-attendance-edit', compact('a', 'e_id', 'tf'));
+    } */
 }
 

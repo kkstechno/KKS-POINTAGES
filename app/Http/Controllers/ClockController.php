@@ -66,6 +66,7 @@ class ClockController extends Controller
 
         // ip resriction
         $iprestriction = table::settings()->value('iprestriction');
+
         if ($iprestriction != NULL) 
         {
             $ips = explode(",", $iprestriction);
@@ -123,7 +124,7 @@ class ClockController extends Controller
                     
                     if($sched_in_time == NULL)
                     {
-                        $status_in = "Ok";
+                        $status_in = "Horaire non-defini";
                     } else {
                         $sched_clock_in_time_24h = date("H.i", strtotime($sched_in_time));
                         $time_in_24h = date("H.i", strtotime($time));
@@ -193,6 +194,8 @@ class ClockController extends Controller
                 ]);
 
             }
+
+
             if($timeIN == NULL) 
             {
                 return response()->json([
@@ -203,7 +206,7 @@ class ClockController extends Controller
                 
                 if($sched_out_time == NULL) 
                 {
-                    $status_out = "Ok";
+                    $status_out = "Horaire non-defini";
                 } else {
                     $sched_clock_out_time_24h = date("H.i", strtotime($sched_out_time));
                     $time_out_24h = date("H.i", strtotime($timeOUT));
@@ -234,7 +237,6 @@ class ClockController extends Controller
                     "date" => $date,
                     "lastname" => $lastname,
                     "firstname" => $firstname,
-                    /* "mi" => $mi, */
                 ]);
             }
         }
