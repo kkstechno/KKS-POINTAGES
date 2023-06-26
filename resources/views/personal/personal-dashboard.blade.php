@@ -214,13 +214,13 @@
                                     @endif
                                     
                                 </td>
-                                <td>
                                     <td>
                                         @if($v->timein == NULL || $v->timeout == NULL )
-                                       <a href="#" class="ui circular basic icon button tiny"><i class="ui icon edit"></i></a>
-                                        @endif 
+                                        <b href="#" class="" title="pointage non achevé"><i class="ui icon info red"></i></b>
+{{--                                         <a href="{{ url('personal-attendance/edit/'.$v->id) }}" class="ui circular basic icon button tiny"><i class="ui icon edit"></i></a>
+ --}}                                   @endif 
                                     </td>
-                                </td>
+
                                 
                             </tr>
                         @endforeach

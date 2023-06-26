@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\personal;
 use DB;
 use App\Classes\table;
+use Carbon\Carbon;
 use App\Classes\permission;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Crypt;
@@ -39,22 +40,56 @@ class PersonalDashboardController extends Controller
         $it = table::attendance()->where([['reference', $id], ['status_timein', 'In Time']])->whereBetween('date', [$sm, $em])->count();
         $ed = table::attendance()->where([['reference', $id], ['status_timeout', 'On time']])->whereBetween('date', [$sm, $em])->count();
 
-    //    dd('bonjour');
-
-/*         $id = auth()->user()->role_id;
-        $d = table::permissions()->where('role_id', $id)->pluck('perm_id')->toArray();
- */           
+    //    dd('bonjour');         
         return view('personal.personal-dashboard', compact('cs', 'ps', 'al', 'pl', 'ald', 'a', 'la', 'it', 'tf'));
     }
-/*     public function edit($id, Request $request)
+/* 
+    public function edit($id, Request $request)
     {
-        if (permission::permitted('attendance-edit')=='fail'){ return redirect()->route('denied'); }
+      if (permission::permitted('attendance-edit')=='fail'){ return redirect()->route('denied'); }  
         
         $a = table::attendance()->where('id', $id)->first();
-        $e_id = ($a->id == null) ? 0 : Crypt::encryptString($a->id) ;
+        $e_id = ($a->id == null) ? 0 : Crypt::encryptString($a->id);
         $tf = table::settings()->value("time_format");
 
         return view('personal.edits.personal-attendance-edit', compact('a', 'e_id', 'tf'));
-    } */
-}
+    } 
 
+    public function update($id, Request $request)
+{
+    try {
+        if (permission::permitted('attendance-edit') == 'fail') {
+            return redirect()->route('denied');
+        }
+    } catch (\Exception $e) {
+
+
+        $a = table::attendance()->where('id', $id)->first();
+        
+        // Vérifiez si l'objet $a existe avant de procéder à la mise à jour
+        if (!$a) {
+            return redirect()->route('denied');
+        }
+        
+        // Effectuez les mises à jour nécessaires avec les données du formulaire
+        $a->idno = $request->input('idno');
+        $a->reference = $request->input('reference');
+        $a->date = $request->input('date');
+        $a->employee = $request->input('employee');
+        $a->timein = $request->input('timein');
+        $a->status_timein = $request->input('status_timein');
+
+        $a->save();
+
+    }
+    
+    
+    return redirect()->route('success');
+} */
+
+
+
+
+
+
+}

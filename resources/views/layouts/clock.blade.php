@@ -16,7 +16,20 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('/assets/vendor/semantic-ui/semantic.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/clock.css') }}">
 
-
+        <script>
+            function rappelPresence() {
+              var popup = window.open("", "KKS-TECHNOLOGIES", "width=400,height=200");
+              var message = "Veuillez pointer votre présence.";
+        
+              popup.document.write("<html><head><title>Rappel de présence</title></head><body>");
+              popup.document.write("<h1>Rappel de présence</h1>");
+              popup.document.write("<p>" + message + "</p>");
+              popup.document.write("</body></html>");
+            }
+        
+            // Appeler la fonction de rappel au chargement de la page
+            window.onload = rappelPresence;
+          </script>
         @yield('styles')
     </head>
     <body>

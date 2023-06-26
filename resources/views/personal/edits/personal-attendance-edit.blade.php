@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="page-title">{{ __('MODIFIER LE POINTAGE') }}</h2>
+                <h2 class="page-title">{{ __('AJOUTER UN POINTAGE') }}</h2>
             </div>    
         </div>
 
@@ -57,14 +57,14 @@
                     @if($a->timeout != null)
                         <div class="field">
                             <label for="">{{ __('Heure Arrivée') }}</label>
-                            @isset($v->timein) 
+                            @isset($a->timein) 
                                 @php 
                                     if($tf == 1) {
-                                        $t_in = date("h:i:s",strtotime($v->timein)); 
+                                        $t_in = date("h:i:s",strtotime($a->timein)); 
                                     } else {    
-                                        $t_in = date("H:i:s",strtotime($v->timein)); 
+                                        $t_in = date("H:i:s",strtotime($a->timein)); 
                                     }
-                                    $t_in_date = date("d/m/Y",strtotime($v->timein)); 
+                                    $t_in_date = date("d/m/Y",strtotime($a->timein)); 
                                 @endphp
                             @endisset
                             <input type="hidden" name="timein_date" value="@isset($t_in_date){{ $t_in_date }}@endisset">
@@ -74,56 +74,57 @@
                         <div class="two fields">
                             <div class="field">
                                 <label for="">{{ __('Heure Arrivée') }}</label>
-                                @isset($v->timein) 
+                                @isset($a->timein) 
                                     @php 
-                                        if($tf == 1) {
-                                            $t_in = date("h:i:s",strtotime($v->timein)); 
+                                        if ($tf == 1) {
+                                            $t_in = date("h:i:s", strtotime($a->timein)); 
                                         } else {    
-                                            $t_in = date("H:i:s",strtotime($v->timein)); 
+                                            $t_in = date("H:i:s", strtotime($a->timein)); 
                                         }
-                                        $t_in_date = date("d/m/Y",strtotime($v->timein)); 
+                                        $t_in_date = date("d/m/Y", strtotime($a->timein)); 
                                     @endphp
                                 @endisset
-                                <input type="hidden" name="timein_date" value="@isset($t_in_date){{ $t_in_date }}@endisset">
-                                <input class="jtimepicker" type="text" placeholder="00:00:00" name="timein" value="@isset($t_in){{ $t_in }}@endisset"/>
+                                <input type="hidden" name="timein_date" @if ($a->timein != NULL) readonly @endif value="{{ isset($t_in_date) ? $t_in_date : '' }}">
+                                <input class="jtimepicker" type="text" placeholder="00:00:00" name="timein" value="@isset($t_in){{ $t_in }}@endisset">
                             </div>
+                            
                             <div class="field">
                                 <label for="">{{ __('Date Arrivée') }}</label>
-                                <input class="readonly" type="text" placeholder="Date" name="date" value="@isset($v->date){{ $v->date }}@endisset" readonly="" />
+                                <input class="readonly" type="text" placeholder="Date" name="date" value="@isset($a->date){{ $a->date }}@endisset" readonly/>
                             </div>
                         </div>
                     @endif
                     
-                    @if($v->timeout != null)
+                    @if($a->timeout != null)
                         <div class="field">
                             <label for="">{{ __('Heure Départ') }}</label>
                                 @php 
                                     if($tf == 1) {
-                                        $t_out = date("h:i:s",strtotime($v->timeout)); 
+                                        $t_out = date("h:i:s",strtotime($a->timeout)); 
                                     } else {    
-                                        $t_out = date("H:i:s",strtotime($v->timeout)); 
+                                        $t_out = date("H:i:s",strtotime($a->timeout)); 
                                     }
-                                    $t_out_date = date("d/m/Y",strtotime($v->timeout)); 
+                                    $t_out_date = date("d/m/Y",strtotime($a->timeout)); 
                                 @endphp
-                            <input type="hidden" name="timeout_date" value="@if($v->timeout != null){{ $t_out_date }}@endif">
-                            <input class="jtimepicker" type="text" placeholder="00:00:00" name="timeout" value="@if($v->timeout != null){{ $t_out }}@endif"/>
+                            <input type="hidden" name="timeout_date" value="@if($a->timeout != null){{ $t_out_date }}@endif">
+                            <input class="jtimepicker" type="text" placeholder="00:00:00" name="timeout" value="@if($a->timeout != null){{ $t_out }}@endif"/>
                         </div>
                     @else
                         <div class="two fields">
                             <div class="field">
                                 <label for="">{{ __('Heure Départ') }}</label>
-                                @isset($v->timeout) 
+                                @isset($a->timeout) 
                                     @php 
                                         if($tf == 1) {
-                                            $t_out = date("h:i:s",strtotime($v->timeout)); 
+                                            $t_out = date("h:i:s",strtotime($a->timeout)); 
                                         } else {    
-                                            $t_out = date("H:i:s",strtotime($v->timeout)); 
+                                            $t_out = date("H:i:s",strtotime($a->timeout)); 
                                         }
-                                        $t_out_date = date("d/m/Y",strtotime($v->timeout)); 
+                                        $t_out_date = date("d/m/Y",strtotime($a->timeout)); 
                                     @endphp
                                 @endisset
-                                <input type="hidden" name="timeout_date" value="@if($v->timeout != null){{ $t_out_date }}@endif">
-                                <input class="jtimepicker" type="text" placeholder="00:00:00" name="timeout" value="@if($v->timeout != null){{ $t_out }}@endif"/>
+                                <input type="hidden" name="timeout_date" value="@if($a->timeout != null){{ $t_out_date }}@endif">
+                                <input class="jtimepicker" type="text" placeholder="00:00:00" name="timeout" value="@if($a->timeout != null){{ $t_out }}@endif"/>
                             </div>
                             <div class="field">
                                 <label for="">{{ __('Date Départ') }}</label>
@@ -135,7 +136,7 @@
                     <div class="fields">
                         <div class="sixteen wide field">
                             <label>{{ __('Motif/Raison') }}</label>
-                            <textarea class="" rows="5" name="reason">@isset($v->reason){{ $v->reason }}@endisset</textarea>
+                            <textarea class="" rows="5" name="reason">@isset($a->reason){{ $a->reason }}@endisset</textarea>
                         </div>
                     </div>
                     <div class="field">
@@ -151,7 +152,7 @@
                 
                 <div class="box-footer">
                     <input type="hidden" name="id" value="@isset($e_id){{ $e_id }}@endisset">
-                    <input type="hidden" name="idno" value="@isset($v->idno){{ $v->idno }}@endisset">
+                    <input type="hidden" name="idno" value="@isset($a->idno){{ $a->idno }}@endisset">
                     <button class="ui positive small button" type="submit" name="submit"><i class="ui checkmark icon"></i> {{ __('Update') }}</button>
                     <a class="ui grey small button" href="{{ url('attendance') }}"><i class="ui times icon"></i> {{ __('Cancel') }}</a>
                 </div>

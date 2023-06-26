@@ -29,7 +29,7 @@ class ClockController extends Controller
         if ($request->idno == NULL || $request->type == NULL) 
         {
             return response()->json([
-                "error" => trans(" Veuillez entrer votre ID.")
+                "error" => trans("Veuillez marquer votre pointage à partir de 07H30.")
             ]);
         }
 
@@ -169,7 +169,7 @@ class ClockController extends Controller
                         "date" => $date,
                         "lastname" => $lastname,
                         "firstname" => $firstname,
-                        "mi" => $mi,
+                        //"mi" => $mi,
                     ]);
                 }
             }

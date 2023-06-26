@@ -14,8 +14,12 @@
 
     @endphp 
 
-
-
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <th bgcolor="#CCCCCC" scope="col" class="auto-style4"><marquee direction="left" scrollamount="6" style="background-color:darkslategray; color:aliceblue;">
+       <b>KKS-TECHNOLOGIES ||</b> Chers collaborateurs, prière de bien vouloir marquer votre heure d'arrivée ainsi que votre heure de départ. </marquee></th>
+    </tr>
+  </table>
 
     
     <div class="container-fluid">

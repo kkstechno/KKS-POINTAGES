@@ -18,13 +18,10 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('/assets/vendor/DataTables/datatables.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('/assets/vendor/flag-icon-css/css/flag-icon.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/style.css') }}">
-        
-
-
-
-        
 
         @yield('styles')
+
+        
     </head>
     <body>
 
